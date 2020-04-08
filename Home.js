@@ -1,23 +1,37 @@
 import React from 'react'
-import { TouchableOpacity, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { Container, Content, Button, Text } from 'native-base';
 
 const Home = () => {
+    const styles = StyleSheet.create({
+        container: {
+            paddingHorizontal: 16,
+            paddingVertical: 8
+        },
+        button: {
+            width: 100,
+            marginBottom: 8
+        }
+    });
+
     const goToLogin = () => {
         Actions.login()
     }
     const goToRegister = () => {
-        Actions.login()
+        Actions.register()
     }
     return (
-        <View>
-            <TouchableOpacity style={{ margin: 128 }} onPress={goToLogin}>
-                <Text>Go to Login</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{ margin: 128 }} onPress={goToRegister}>
-                <Text>Go to Register</Text>
-            </TouchableOpacity>
-        </View>
+        <Container style={styles.container}>
+            <Content>
+                <Button onPress={goToLogin} style={styles.button}>
+                    <Text>Login</Text>
+                </Button>
+                <Button bordered onPress={goToRegister} style={styles.button}>
+                    <Text>Register</Text>
+                </Button>
+            </Content>
+        </Container>
     )
 }
 export default Home
