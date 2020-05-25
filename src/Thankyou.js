@@ -1,5 +1,9 @@
-import React, {Component} from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, 
+         View, 
+         Text, 
+         Image 
+    } from 'react-native';
 import { Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
@@ -9,7 +13,6 @@ const goToHome = () => {
 
 export default class Thankyou extends Component {
     static navigationOptions = {
-        //To hide the NavigationBar from current Screen
         header: null
     };
     
@@ -17,7 +20,7 @@ export default class Thankyou extends Component {
         return (
             <View style={styles.page}>
                 <View>
-                    <Image source={require('./assets/images/bigThanks.png')} style={styles.bigThanksWrap} />
+                    <Image source={require('../assets/images/bigThanks.png')} style={styles.bigThanksWrap} />
                 </View>
                 <View style={styles.thxMessageWrap}>
                     <Text style={styles.thxMessage}>

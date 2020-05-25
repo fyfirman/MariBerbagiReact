@@ -1,21 +1,29 @@
 import React, {Component} from 'react'
-import { StyleSheet, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, 
+         View, 
+         Image, 
+         TextInput, 
+         TouchableOpacity 
+    } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Container, Content, Text, Root } from 'native-base';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import ButtonPrimary from './src/elements/ButtonPrimary';
+import { Container, 
+         Content, 
+         Text, 
+         Root 
+    } from 'native-base';
+import ButtonPrimary from './elements/ButtonPrimary';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
-import DeskripsiBarang from './components/deskripsiBarang';
-import PeminatBarang from './components/peminatBarang';
-import DiskusiBarang from './components/diskusiBarang';
+import DeskripsiKampanye from '../components/deskripsiKampanye';
+import PeminatKampanye from '../components/peminatKampanye';
+import PengirimKampanye from '../components/pengirimKampanye';
+import DiskusiKampanye from '../components/diskusiKampanye';
 
 const goToHome = () => {
    Actions.home()
 }
 
-export default class Detailbarang extends Component{
+export default class Detailkampanye extends Component{
     static navigationOptions = {
-      //To hide the NavigationBar from current Screen
       header: null
     };
 
@@ -24,16 +32,19 @@ export default class Detailbarang extends Component{
         this.state = {
             val: 1,
             jumPeminat : 3,
+            jumPengirim: 1,
         };
     }
 
     renderElement(){
-        if(this.state.val == 'deskripsiBarang'){
-            return <DeskripsiBarang />;
-        } else if(this.state.val == 'peminatBarang'){
-            return <PeminatBarang />;
-        } else {
-            return <DiskusiBarang />;
+        if(this.state.val == 'diskusiKampanye'){
+            return <DiskusiKampanye />;
+        } else if(this.state.val == 'peminatKampanye'){
+            return <PeminatKampanye />;
+        } else if(this.state.val == 'pengirimKampanye'){
+            return <PengirimKampanye />;
+        } else{
+            return <DeskripsiKampanye />
         }
     }
 
@@ -47,8 +58,8 @@ export default class Detailbarang extends Component{
                         <IconIonicons onPress = {goToHome} name='ios-arrow-round-back' style={styles.arrow}/>
                     </View>
                     <View style={styles.barWrapper}>
-                        <TextInput placeholder="Cari Barang Sumbangan" placeholderTextColor='black' style={styles.searchBar}/>
-                        <Image source={require('./assets/images/search.png')} style={styles.searchLogo}/>
+                        <TextInput placeholder="Cari Kampanye " placeholderTextColor='black' style={styles.searchBar}/>
+                        <Image source={require('../assets/images/search.png')} style={styles.searchLogo}/>
                     </View>
                 </View>
 
@@ -59,32 +70,26 @@ export default class Detailbarang extends Component{
                             rounded
                             style={styles.image1}
                             //resizeMode="contain"
-                            source={require('./assets/images/macOS5.jpg')}
+                            source={require('../assets/images/macOS5.jpg')}
                         />
                     </View>
                     <View style={styles.view2}>
                         <Image 
                             style={styles.image2}
                             //resizeMode="contain"
-                            source={require('./assets/images/macOS5.jpg')}
+                            source={require('../assets/images/macOS5.jpg')}
                         />
                         <Image 
                             style={styles.image3}
                             //resizeMode="contain"
-                            source={require('./assets/images/macOS5.jpg')}
+                            source={require('../assets/images/macOS5.jpg')}
                         />
                     </View>
 
                     <View>
-                        <Text style={styles.namaBarang}>Pakaian Bekas Warna Biru</Text>
+                        <Text style={styles.namaBarang}>Butuh 20 Lusin Pakaian Bekas untuk Korban Gempa Sulawesi</Text>
                         {/*Pengirim*/}
-                        <Text style={styles.namaPengirim}>Dari Kevin Akbar Adhiguna</Text>
-                        <View style={styles.ket}>
-                            {/*Kondisi Barang*/}
-                            <Text style={styles.ketBarang}>Kondisi 70% {"  "}</Text>
-                            {/*Kategori Barang*/}
-                            <Text style={styles.ketBarang}>Kategori Pakaian</Text>
-                        </View>
+                        <Text style={styles.namaPengirim}>Dari Firmansyah Yanuar</Text>
                         <View style={styles.ket}>
                             {/*Lokasi Barang*/}
                             <Text style={styles.ketBarang}>Sumatera Utara {"  "}</Text>
@@ -98,9 +103,9 @@ export default class Detailbarang extends Component{
                         <View style={styles.garis}>
                             <TouchableOpacity 
                                 style={styles.frag}
-                                onPress={() => this.setState({ val: 'deskripsiBarang' })}
+                                onPress={() => this.setState({ val: 'deskripsiKampanye' })}
                             >
-                                <Image source={require('./assets/icons_real/icon_deskripsi.png')} />
+                                <Image source={require('../assets/icons_real/icon_deskripsi.png')} />
                                 <Text style={styles.txtFrag}>Deskripsi</Text>
                             </TouchableOpacity>
                         </View>
@@ -108,7 +113,7 @@ export default class Detailbarang extends Component{
                         <View style={styles.garis}>
                             <TouchableOpacity 
                                 style={styles.frag}
-                                onPress={() => this.setState({ val: 'peminatBarang' })}
+                                onPress={() => this.setState({ val: 'peminatKampanye' })}
                             >
                                 <Text style={styles.txtFrag}>{this.state.jumPeminat} Peminat</Text>
                             </TouchableOpacity>
@@ -117,9 +122,18 @@ export default class Detailbarang extends Component{
                         <View style={styles.garis}>
                             <TouchableOpacity 
                                 style={styles.frag}
-                                onPress={() => this.setState({ val: 'diskusiBarang' })}
+                                onPress={() => this.setState({ val: 'pengirimKampanye' })}
                             >
-                                <Image source={require('./assets/icons_real/icon_diskusi.png')} />
+                                <Text style={styles.txtFrag}>{this.state.jumPengirim} Pengirim</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.garis}>
+                            <TouchableOpacity 
+                                style={styles.frag}
+                                onPress={() => this.setState({ val: 'diskusiKampanye' })}
+                            >
+                                <Image source={require('../assets/icons_real/icon_diskusi.png')} />
                                 <Text style={styles.txtFrag}>Diskusi</Text>
                             </TouchableOpacity>
                         </View>
@@ -129,11 +143,11 @@ export default class Detailbarang extends Component{
                     <View>
                         {this.renderElement()}
                     </View>
-                    
+
                 </Content>
 
                 <View style={styles.buttonMinat}>
-                        <ButtonPrimary text="MINAT MENERIMA" /*onPress={}*/ ></ButtonPrimary>
+                        <ButtonPrimary text="MINAT MENYUMBANG" /*onPress={}*/ ></ButtonPrimary>
                 </View>
 
             </Container>
@@ -149,12 +163,12 @@ const styles = StyleSheet.create({
         position: 'relative',
         flexDirection: 'row',
         height: 75,
-        justifyContent: 'center', 
+        //justifyContent: 'center', 
         alignItems: 'center', 
     },
     arrow: {
         marginTop: 6,
-        marginLeft: 5,
+        marginLeft: 25,
         fontSize: 40,
         color: 'white',
     },
@@ -170,7 +184,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-Regular',
         fontSize: 13,
         paddingLeft: 45,
-        paddingRight: 85,
+        paddingRight: 140,
         backgroundColor: 'white',
         marginLeft: 10,
     },

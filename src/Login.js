@@ -16,7 +16,7 @@ import {
   Input,
   Root,
 } from 'native-base';
-import ButtonPrimary from './src/elements/ButtonPrimary';
+import ButtonPrimary from './elements/ButtonPrimary';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import ValidationComponent from 'react-native-form-validator';
@@ -48,7 +48,6 @@ export default class Login extends ValidationComponent {
   };
 
   static navigationOptions = {
-    //To hide the NavigationBar from current Screen
     header: null,
   };
 

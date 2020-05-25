@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { StyleSheet, 
+         View, 
+         Text, 
+         ImageBackground 
+    } from 'react-native';
 import { Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
@@ -9,14 +13,13 @@ const goToRegister = () => {
 
 export default class Welcome extends Component {
     static navigationOptions = {
-        //To hide the NavigationBar from current Screen
         header: null
     };
     
     render() {
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('./assets/images/welcome.png')} style={styles.image}>
+                <ImageBackground source={require('../assets/images/welcome.png')} style={styles.image}>
                     <Text style={styles.judul} >MARI BERBAGI</Text>
                     <Text style={styles.pesan}>
                         Mari berbagi adalah platform sumbangan barang layak guna bagi masyarakat Indonesia.
