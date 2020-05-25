@@ -45,6 +45,9 @@ const Home = () => {
     const goToListkampanye = () => {
         Actions.listkampanye()
     }
+    const goToListbarang = () => {
+        Actions.listbarang()
+    }
     
     return (
         <Container style={styles.container}>
@@ -78,6 +81,9 @@ const Home = () => {
                 </Button>
                 <Button bordered onPress={goToListkampanye} style={styles.button}>
                     <Text>List Kampanye</Text>
+                </Button>
+                <Button bordered onPress={goToListbarang} style={styles.button}>
+                    <Text>List Barang</Text>
                 </Button>
             </Content>
         </Container>

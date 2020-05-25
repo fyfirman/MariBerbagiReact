@@ -15,8 +15,8 @@ import { Button,
          Label, 
          Root, 
          Header } from 'native-base';
-import ButtonPrimary from './src/elements/ButtonPrimary';
-//import ButtonSecondary from './src/elements/ButtonSecondary';
+import ButtonPrimary from './elements/ButtonPrimary';
+//import ButtonSecondary from './elements/ButtonSecondary';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 

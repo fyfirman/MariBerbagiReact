@@ -1,33 +1,41 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, 
+         Text, 
+         View, 
+         Image, 
+    } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Card, CardItem, Button } from 'native-base';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Root, 
+         Container, 
+         Content, 
+         Card,  
+    } from 'native-base';
+import BottomNav from '../components/bottomNavbar';
 
-export default class Profileverified extends Component{
+export default class Profile extends Component{
     static navigationOptions = {
-        //To hide the NavigationBar from current Screen
         header: null
     };
 
     render() {
         return (
-            <ScrollView>
-                
-                <View>
+        <Root>
+            <Container>
+
+                <Content>
                     <View style={styles.header}>
-                        <Image source={require('./assets/images/macOS5.jpg')} style={styles.profpic} />
+                        <Image source={require('../assets/images/macOS5.jpg')} style={styles.profpic} />
 
                         <View style={styles.aboutAkun}>
                             <Text style={styles.uname}>Kevin Akbar</Text>
                             
                             <View style={styles.verifStatus}>
-                                <Image source={require('./assets/icons_real/centang_verified.png')} />
-                                <Text style={styles.verif}>Akun Terverifikasi</Text>
+                                <Image source={require('../assets/icons_real/centang_Unverified.png')} />
+                                <Text style={styles.verif}>Akun Belum Terverifikasi</Text>
                             </View>
                         </View>
                         
-                        <Image source={require('./assets/icons_real/Setting.png')} style={styles.setting} />
+                        <Image source={require('../assets/icons_real/Setting.png')} style={styles.setting} />
                     </View>
 
                     <Card style={styles.cardUtama}>
@@ -40,7 +48,7 @@ export default class Profileverified extends Component{
                         <View style={styles.kartuBarang}>
 
                             <View style={{flexDirection: 'column'}}>
-                                <Image source={require('./assets/images/macOS5.jpg')} style={styles.fotoBarang} />                        
+                                <Image source={require('../assets/images/macOS5.jpg')} style={styles.fotoBarang} />                        
                                 <View style={styles.boxKet}>
                                     <Text>Pakaian Bekas Warna Biru</Text>
                                         <View style={styles.isiKet}>
@@ -51,7 +59,7 @@ export default class Profileverified extends Component{
                             </View>
                                 
                             <View style={{flexDirection: 'column'}}>
-                                <Image source={require('./assets/images/macOS5.jpg')} style={styles.fotoBarang} />                        
+                                <Image source={require('../assets/images/macOS5.jpg')} style={styles.fotoBarang} />                        
                                 <View style={styles.boxKet}>
                                     <Text>Pakaian Bekas Warna Biru</Text>
                                     <View style={styles.isiKet}>
@@ -71,7 +79,7 @@ export default class Profileverified extends Component{
                         <View style={styles.kartuBarang}>
                                 
                             <View style={{flexDirection: 'column'}}>
-                                <Image source={require('./assets/images/macOS5.jpg')} style={styles.fotoBarang} />                        
+                                <Image source={require('../assets/images/macOS5.jpg')} style={styles.fotoBarang} />                        
                                 <View style={styles.boxKet}>
                                     <Text>Pakaian Bekas Warna Biru</Text>
                                     <View style={styles.isiKet}>
@@ -82,7 +90,7 @@ export default class Profileverified extends Component{
                             </View>
 
                             <View style={{flexDirection: 'column'}}>
-                                <Image source={require('./assets/images/macOS5.jpg')} style={styles.fotoBarang} />                        
+                                <Image source={require('../assets/images/macOS5.jpg')} style={styles.fotoBarang} />                        
                                 <View style={styles.boxKet}>
                                     <Text>Pakaian Bekas Warna Biru</Text>
                                     <View style={styles.isiKet}>
@@ -95,45 +103,17 @@ export default class Profileverified extends Component{
                         </View>
 
                         <Text style={styles.myCampaign}>Kampanye Saya</Text>
-                        <Button block style={styles.buttonPrimary}>
-                            <Text style={styles.tulisanButton}>BUAT KAMPANYE</Text>
-                        </Button>
+                        <Text style={styles.ketMyCampaign}>Hanya untuk Akun Terverifikasi</Text>
 
                     </Card>
-                        
+                </Content>
+                
+                <View>
+                    <BottomNav />
                 </View>
                 
-                <View style={styles.navbar}>
-
-                    <View style={styles.isiNavbar}>
-                        <View style={styles.icon}>
-                            <Image source={require('./assets/icons_real/search_on.png')}/>
-                        </View>
-                    </View>
-                    <View style={styles.isiNavbar}>
-                        <View style={styles.icon}>
-                            <Image source={require('./assets/icons_real/kampanye.png')}/>
-                        </View>
-                    </View>
-                    <View>
-                        <View style={styles.iconPost}>
-                            <Image source={require('./assets/icons_B/post_B.png')}/>
-                        </View>
-                    </View>
-                    <View style={styles.isiNavbar}>
-                        <View style={styles.icon}>
-                            <Image source={require('./assets/icons_real/chat.png')}/>
-                        </View>
-                    </View>
-                    <View style={styles.isiNavbar}>
-                        <View style={styles.icon}>
-                            <Image source={require('./assets/icons_real/user.png')}/>
-                        </View>
-                    </View>
-
-                </View>
-
-            </ScrollView>
+            </Container>
+        </Root>
         );
     }
 }
@@ -173,7 +153,7 @@ const styles = StyleSheet.create({
     },
     setting: {
         marginTop: 25,
-        marginLeft: 70,
+        marginLeft: 30,
     },
     cardUtama: {
         borderRadius:20,
@@ -245,30 +225,5 @@ const styles = StyleSheet.create({
         color: 'grey',
         paddingHorizontal: 7,
         paddingTop: 5,
-    },
-    buttonPrimary: {
-        backgroundColor: '#F05E23',
-        marginVertical:5,
-        borderRadius:5,
-    },
-    tulisanButton: {
-        fontFamily: 'Montserrat-Regular',
-        fontSize: 12,
-        color: 'white',
-    },
-    navbar: {
-        flex: 1,
-        height: 50,
-        width: 360,
-        backgroundColor: '#f6f6f6',
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-    },
-    isiNavbar: {
-        alignContent: 'center',
-        justifyContent: 'center',
-    },
-    iconPost: {
-        marginTop: -10,
     },
 });
