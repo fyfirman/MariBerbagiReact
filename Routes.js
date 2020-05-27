@@ -12,6 +12,7 @@ import Profile from './src/Profile';
 import Profileverified from './src/Profileverified';
 import Listkampanye from './src/Listkampanye';
 import Listbarang from './src/Listbarang';
+import Request from './src/Request';
 
 const Routes = () => (
     <Router>
@@ -28,6 +29,7 @@ const Routes = () => (
             <Scene key="profileverified" component={Profileverified} title="Profileverified" />
             <Scene key="listkampanye" component={Listkampanye} title="Listkampanye" />
             <Scene key="listbarang" component={Listbarang} title="Listbarang" />
+            <Scene key="request" component={Request} title="Request" />
         </Scene>
     </Router>
 )

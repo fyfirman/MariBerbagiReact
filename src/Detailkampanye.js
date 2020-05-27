@@ -11,7 +11,6 @@ import { Container,
          Text, 
          Root 
     } from 'native-base';
-import ButtonPrimary from './elements/ButtonPrimary';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import DeskripsiKampanye from '../components/deskripsiKampanye';
 import PeminatKampanye from '../components/peminatKampanye';
@@ -146,9 +145,9 @@ export default class Detailkampanye extends Component{
 
                 </Content>
 
-                <View style={styles.buttonMinat}>
-                        <ButtonPrimary text="MINAT MENYUMBANG" /*onPress={}*/ ></ButtonPrimary>
-                </View>
+                <TouchableOpacity style={styles.buttonMinat}>
+                    <Text style={styles.textMinat}>IKUT KAMPANYE</Text>
+                </TouchableOpacity>
 
             </Container>
         </Root>
@@ -270,6 +269,17 @@ const styles = StyleSheet.create({
         paddingLeft: 4,
     },
     buttonMinat: {
-        paddingHorizontal:5,
+        marginHorizontal: 14,
+        backgroundColor: '#F05E23',
+        marginBottom: 10,
+        borderRadius:5,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    textMinat: {
+        fontFamily: 'Montserrat-Regular',
+        fontSize: 15,
+        color: 'white',
     },
 });

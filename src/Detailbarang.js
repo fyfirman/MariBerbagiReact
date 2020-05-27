@@ -11,14 +11,17 @@ import { Root,
          Container,
          Content, 
     } from 'native-base';
-import ButtonPrimary from './elements/ButtonPrimary';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import DeskripsiBarang from '../components/deskripsiBarang';
 import PeminatBarang from '../components/peminatBarang';
 import DiskusiBarang from '../components/diskusiBarang';
 
 const goToHome = () => {
-   Actions.home()
+    Actions.home()
+}
+
+const goToRequest = () => {
+    Actions.request()
 }
 
 export default class Detailbarang extends Component{
@@ -139,9 +142,9 @@ export default class Detailbarang extends Component{
                     
                 </Content>
 
-                <View style={styles.buttonMinat}>
-                        <ButtonPrimary text="MINAT MENERIMA" /*onPress={}*/ ></ButtonPrimary>
-                </View>
+                <TouchableOpacity style={styles.buttonMinat} onPress={goToRequest}>
+                    <Text style={styles.textMinat}>MINAT MENERIMA</Text>
+                </TouchableOpacity>
 
             </Container>
         </Root>
@@ -263,6 +266,17 @@ const styles = StyleSheet.create({
         paddingLeft: 4,
     },
     buttonMinat: {
-        paddingHorizontal:5,
+        marginHorizontal: 14,
+        backgroundColor: '#F05E23',
+        marginBottom: 10,
+        borderRadius:5,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    textMinat: {
+        fontFamily: 'Montserrat-Regular',
+        fontSize: 15,
+        color: 'white',
     },
 });
