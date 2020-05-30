@@ -1,6 +1,11 @@
 'use strict';
 import React, {Component} from 'react';
-import {TextInput, Alert, StyleSheet, View} from 'react-native';
+import {
+  TextInput,
+  TouchableWithoutFeedback,
+  StyleSheet,
+  View,
+} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {
   Button,
@@ -27,8 +32,13 @@ var BUTTONS = [
 ];
 var DESTRUCTIVE_INDEX = 3;
 var CANCEL_INDEX = 4;
-const goToHome = () => {
-  Actions.home();
+
+const goToListbarang = () => {
+  Actions.listbarang();
+};
+
+const goToRegister = () => {
+  Actions.register();
 };
 
 export default class Login extends ValidationComponent {
@@ -43,8 +53,11 @@ export default class Login extends ValidationComponent {
   _onPressButton = () => {
     this.validate({
       email: {email: true, required: true},
-      password: {minlength: 3, maxlength: 7, required: true},
+      password: {minlength: 3, required: true},
     });
+    if (this.isFormValid('email') && this.isFormValid('password')) {
+      Actions.listbarang();
+    }
   };
 
   static navigationOptions = {
@@ -65,7 +78,7 @@ export default class Login extends ValidationComponent {
                 marginBottom: -40,
               }}>
               <IconIonicons
-                onPress={goToHome}
+                onPress={goToListbarang}
                 name="ios-arrow-round-back"
                 style={{fontSize: 40, color: 'white'}}
               />
@@ -151,16 +164,6 @@ export default class Login extends ValidationComponent {
                       </Text>
                     ))}
                 </Form>
-                <Content style={{paddingVertical: 10}}>
-                  <Text
-                    style={{
-                      textAlign: 'center',
-                      fontFamily: 'Montserrat-Regular',
-                    }}>
-                    Dengan mendaftar akun Mari Berbagi saya menyetujui Aturan
-                    Penggunaan Mari Berbagi.
-                  </Text>
-                </Content>
                 <Button
                   block
                   onPress={this._onPressButton}
@@ -168,6 +171,26 @@ export default class Login extends ValidationComponent {
                   <Text>Masuk</Text>
                 </Button>
                 {/* simpen sini hidden*/}
+                <Text
+                  style={{
+                    marginTop: 10,
+                    textAlign: 'center',
+                    fontFamily: 'Montserrat-Regular',
+                    fontSize: 12,
+                  }}>
+                  Belum punya akun Mari Berbagi?{' '}
+                  <TouchableWithoutFeedback onPress={goToRegister}>
+                    <Text
+                      style={{
+                        textAlign: 'center',
+                        fontFamily: 'Montserrat-Bold',
+                        fontSize: 12,
+                        color: '#F05E23',
+                      }}>
+                      Daftar di Sini
+                    </Text>
+                  </TouchableWithoutFeedback>
+                </Text>
               </Card>
             </Content>
           </Content>

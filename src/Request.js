@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import { TextInput,
-         StyleSheet,
-         TouchableOpacity,
-        } from 'react-native';
+import {TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 import {
   Container,
   Header,
@@ -18,13 +15,23 @@ import {
   Footer,
   FooterTab,
 } from 'native-base';
-import { Actions } from 'react-native-router-flux';
+import {Actions} from 'react-native-router-flux';
 
 const goToDetailBarang = () => {
-    Actions.detailbarang()
-}
+  Actions.detailbarang();
+};
 
 export default class Request extends Component {
+  _onPressButton = () => {
+    //this.validate({
+    //email: {email: true, required: true},
+    //password: {minlength: 3, required: true},
+    //});
+    //if (this.isFormValid('email') && this.isFormValid('password')) {
+    Actions.listbarang();
+    //}
+  };
+
   static navigationOptions = {
     header: null,
   };
@@ -114,30 +121,31 @@ export default class Request extends Component {
             />
           </Form>
         </Content>
-        
-        <TouchableOpacity style={styles.buttonMinat}>
-            <Text style={styles.textMinat}>KIRIM</Text>
-        </TouchableOpacity>
 
+        <TouchableOpacity
+          style={styles.buttonMinat}
+          onPress={this._onPressButton}>
+          <Text style={styles.textMinat}>KIRIM</Text>
+        </TouchableOpacity>
       </Container>
     );
   }
 }
 
 const styles = StyleSheet.create({
-    button: {
-      backgroundColor: '#FFE8C5',
-      borderRadius: 5,
-    },
-    buttonMinat: {
-      backgroundColor: '#F05E23',
-      height: 40,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    textMinat: {
-      fontFamily: 'Montserrat-Regular',
-      fontSize: 15,
-      color: 'white',
-    },
+  button: {
+    backgroundColor: '#FFE8C5',
+    borderRadius: 5,
+  },
+  buttonMinat: {
+    backgroundColor: '#F05E23',
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textMinat: {
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 15,
+    color: 'white',
+  },
 });

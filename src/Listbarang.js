@@ -1,33 +1,31 @@
 import React, {Component} from 'react';
-import {  Text, 
-          Image, 
-          TextInput, 
-          StyleSheet, 
-          View,
-        } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import { Col, Row, Grid } from 'react-native-easy-grid';
+import {
+  Text,
+  Image,
+  TextInput,
+  StyleSheet,
+  View,
+  TouchableWithoutFeedback,
+} from 'react-native';
+import {Actions} from 'react-native-router-flux';
+import {Col, Row, Grid} from 'react-native-easy-grid';
 import {
   Root,
   Content,
   Container,
   Header,
-  Footer,
-  FooterTab,
   Button,
-  Icon,
   Card,
   CardItem,
-  Thumbnail,
-  Left,
   Body,
-  Right,
-  Item,
-  Input,
 } from 'native-base';
 import IconSimple from 'react-native-vector-icons/SimpleLineIcons';
 import IconAwesome from 'react-native-vector-icons/FontAwesome';
 import BottomNav from '../components/bottomNavbar';
+
+const goToDetailbarang = () => {
+  Actions.detailbarang();
+};
 
 export default class Pencarian extends Component {
   static navigationOptions = {
@@ -66,7 +64,7 @@ export default class Pencarian extends Component {
                   </View>
                   <TextInput
                     placeholder="Cari Barang Sumbangan       "
-                    style={{paddingRight: 15, fontFamily: 'Montserrat-Regular', }}
+                    style={{paddingRight: 15, fontFamily: 'Montserrat-Regular'}}
                   />
                 </View>
               </View>
@@ -88,11 +86,7 @@ export default class Pencarian extends Component {
                 <Button
                   transparent
                   style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-                  <IconAwesome
-                    name="filter"
-                    size={25}
-                    color="white"
-                  />
+                  <IconAwesome name="filter" size={25} color="white" />
                   <Text
                     style={{color: 'white', fontFamily: 'Montserrat-Regular'}}>
                     Saring
@@ -116,22 +110,24 @@ export default class Pencarian extends Component {
                     />
                   </CardItem>
                   <CardItem>
-                    <Body>
-                      <Text
-                        style={{
-                          fontSize: 12,
-                          fontFamily: 'Montserrat-Bold',
-                        }}>
-                        Pakaian Bekas Warna Biru
-                      </Text>
-                      <Text
-                        style={{
-                          fontSize: 10,
-                          fontFamily: 'Montserrat-Regular',
-                        }}>
-                        Kondisi 70% - 3 Peminat
-                      </Text>
-                    </Body>
+                    <TouchableWithoutFeedback onPress={goToDetailbarang}>
+                      <Body>
+                        <Text
+                          style={{
+                            fontSize: 12,
+                            fontFamily: 'Montserrat-Bold',
+                          }}>
+                          Pakaian Bekas Warna Biru
+                        </Text>
+                        <Text
+                          style={{
+                            fontSize: 10,
+                            fontFamily: 'Montserrat-Regular',
+                          }}>
+                          Kondisi 70% - 3 Peminat
+                        </Text>
+                      </Body>
+                    </TouchableWithoutFeedback>
                   </CardItem>
                 </Card>
               </Col>
@@ -147,22 +143,24 @@ export default class Pencarian extends Component {
                     />
                   </CardItem>
                   <CardItem>
-                    <Body>
-                      <Text
-                        style={{
-                          fontSize: 12,
-                          fontFamily: 'Montserrat-Bold',
-                        }}>
-                        Pakaian Bekas Warna Biru
-                      </Text>
-                      <Text
-                        style={{
-                          fontSize: 10,
-                          fontFamily: 'Montserrat-Regular',
-                        }}>
-                        Kondisi 70% - 3 Peminat
-                      </Text>
-                    </Body>
+                    <TouchableWithoutFeedback onPress={goToDetailbarang}>
+                      <Body>
+                        <Text
+                          style={{
+                            fontSize: 12,
+                            fontFamily: 'Montserrat-Bold',
+                          }}>
+                          Pakaian Bekas Warna Biru
+                        </Text>
+                        <Text
+                          style={{
+                            fontSize: 10,
+                            fontFamily: 'Montserrat-Regular',
+                          }}>
+                          Kondisi 70% - 3 Peminat
+                        </Text>
+                      </Body>
+                    </TouchableWithoutFeedback>
                   </CardItem>
                 </Card>
               </Col>
@@ -172,27 +170,6 @@ export default class Pencarian extends Component {
           <View>
             <BottomNav />
           </View>
-          {/*
-          <Footer>
-            <FooterTab>
-              <Button>
-                <Icon type="FontAwesome" name="search" />
-              </Button>
-              <Button>
-                <Icon type="AntDesign" name="notification" />
-              </Button>
-              <Button active>
-                <Icon active type="FontAwesome" name="plus-circle" />
-              </Button>
-              <Button>
-                <Icon type="MaterialIcons" name="chat" />
-              </Button>
-              <Button>
-                <Icon name="person" />
-              </Button>
-            </FooterTab>
-          </Footer>
-          */}
         </Container>
       </Root>
     );

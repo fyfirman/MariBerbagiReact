@@ -17,17 +17,15 @@ import {
   Form,
   Label,
   Root,
+  Header,
 } from 'native-base';
 import ButtonPrimary from './elements/ButtonPrimary';
+//import ButtonSecondary from './elements/ButtonSecondary';
+//import Icon from 'react-native-vector-icons/FontAwesome';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
-import ValidationComponent from 'react-native-form-validator';
 
-const goToListbarang = () => {
-  Actions.listbarang();
-};
-
-const goToAturanpenggunaan = () => {
-  Actions.aturanpenggunaan();
+const goToHome = () => {
+  Actions.home();
 };
 
 const goToLogin = () => {
@@ -55,14 +53,9 @@ export default class Register extends Component {
     };
   }
 
-  _onPressButton = () => {
-    //this.validate({
-    //email: {email: true, required: true},
-    //password: {minlength: 3, required: true},
-    //});
-    //if (this.isFormValid('email') && this.isFormValid('password')) {
-    Actions.listbarang();
-    //}
+  submit = () => {
+    //Handler for the Submit onPress
+    Actions.home();
   };
 
   // Kumpulan function input Validator sesuai field pada form registrasi
@@ -152,25 +145,14 @@ export default class Register extends Component {
       <Root>
         <Container>
           <Content style={styles.container}>
-            <View
-              style={{
-                backgroundColor: '#F05E23',
-                paddingTop: 50,
-                paddingBottom: 70,
-                paddingHorizontal: 30,
-                marginBottom: -40,
-              }}>
+            <Header span style={styles.header}>
               <IconIonicons
-                onPress={goToLogin}
+                onPress={goToHome}
                 name="ios-arrow-round-back"
-                style={{fontSize: 40, color: 'white'}}
+                style={styles.arrow}
               />
-              <H1
-                light
-                style={{color: '#ffffff', fontFamily: 'Montserrat-Bold'}}>
-                DAFTAR AKUN
-              </H1>
-            </View>
+              <H1 style={styles.daftar}>DAFTAR AKUN</H1>
+            </Header>
 
             <Card style={styles.card}>
               <Form style={styles.form}>
@@ -246,22 +228,16 @@ export default class Register extends Component {
               <Content style={styles.content}>
                 <Text style={styles.term}>
                   Dengan mendaftar akun Mari Berbagi saya menyetujui{' '}
-                  <TouchableWithoutFeedback onPress={goToAturanpenggunaan}>
-                    <Text style={styles.aturan}>
-                      Aturan Penggunaan Mari Berbagi
-                    </Text>
-                  </TouchableWithoutFeedback>
+                  <Text style={styles.aturan}>
+                    Aturan Penggunaan Mari Berbagi
+                  </Text>
+                  .
                 </Text>
               </Content>
 
-              <Button
-                block
-                onPress={this._onPressButton}
-                style={styles.buttonPrimary}>
-                <Text>Masuk</Text>
-              </Button>
+              <ButtonPrimary text="DAFTAR" onPress={this.submit} />
 
-              <View style={{marginTop: 10, marginBottom: 10}}>
+              <View>
                 <Text style={styles.punyaAkun}>
                   Sudah punya akun ?{' '}
                   <TouchableWithoutFeedback onPress={goToLogin}>
@@ -304,20 +280,29 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: 'white',
   },
+  daftar: {
+    fontFamily: 'Montserrat-ExtraBold',
+    fontSize: 26,
+    color: 'white',
+    paddingTop: 50,
+    paddingRight: 90,
+  },
   card: {
     borderRadius: 20,
-    padding: 20,
+    padding: 10,
     marginBottom: 20,
+    marginTop: -35,
     marginLeft: 15,
     marginRight: 15,
   },
   form: {
-    paddingTop: 10,
+    paddingTop: 20,
   },
   label: {
     fontFamily: 'Montserrat-Regular',
-    fontSize: 13,
+    fontSize: 15,
     color: 'black',
+    paddingTop: 10,
   },
   notifError: {
     fontFamily: 'Montserrat-Regular',
@@ -329,6 +314,7 @@ const styles = StyleSheet.create({
     borderColor: '#E4E4E4',
     borderRadius: 5,
     paddingHorizontal: 10,
+    marginBottom: 5,
   },
   content: {
     paddingTop: 5,
@@ -345,23 +331,19 @@ const styles = StyleSheet.create({
   },
   punyaAkun: {
     fontFamily: 'Montserrat-Regular',
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'center',
     color: '#8E8E8E',
   },
   punyaAkunLogin: {
     fontFamily: 'Montserrat-Regular',
-    fontSize: 12,
+    fontSize: 14,
     paddingLeft: 5,
+    textDecorationLine: 'underline',
     color: '#F05E23',
   },
   button: {
     backgroundColor: '#FFE8C5',
-    marginVertical: 5,
-    borderRadius: 5,
-  },
-  buttonPrimary: {
-    backgroundColor: '#F05E23',
     marginVertical: 5,
     borderRadius: 5,
   },
