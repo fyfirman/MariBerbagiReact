@@ -1,6 +1,6 @@
 export { default as Home } from './Home';
 export { default as Login } from './Login';
-export { default as Register } from './Register';
+export { default as Register } from './Register/Register';
 export { default as Detailbarang } from './Detailbarang';
 export { default as Detailkampanye } from './Detailkampanye';
 export { default as Welcome } from './Welcome';
