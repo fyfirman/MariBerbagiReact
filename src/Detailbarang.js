@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,8 +7,8 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import {Actions} from 'react-native-router-flux';
-import {Root, Container, Content} from 'native-base';
+import { Actions } from 'react-native-router-flux';
+import { Root, Container, Content } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import DeskripsiBarang from '../components/deskripsiBarang';
 import PeminatBarang from '../components/peminatBarang';
@@ -112,11 +112,11 @@ export default class Detailbarang extends Component {
               </View>
             </View>
 
-            <View style={{flexDirection: 'row'}}>
+            <View style={{ flexDirection: 'row' }}>
               <View style={styles.garis}>
                 <TouchableOpacity
                   style={styles.frag}
-                  onPress={() => this.setState({val: 'deskripsiBarang'})}>
+                  onPress={() => this.setState({ val: 'deskripsiBarang' })}>
                   <Image
                     source={require('../assets/icons_real/icon_deskripsi.png')}
                   />
@@ -127,7 +127,7 @@ export default class Detailbarang extends Component {
               <View style={styles.garis}>
                 <TouchableOpacity
                   style={styles.frag}
-                  onPress={() => this.setState({val: 'peminatBarang'})}>
+                  onPress={() => this.setState({ val: 'peminatBarang' })}>
                   <Text style={styles.txtFrag}>
                     {this.state.jumPeminat} Peminat
                   </Text>
@@ -137,7 +137,7 @@ export default class Detailbarang extends Component {
               <View style={styles.garis}>
                 <TouchableOpacity
                   style={styles.frag}
-                  onPress={() => this.setState({val: 'diskusiBarang'})}>
+                  onPress={() => this.setState({ val: 'diskusiBarang' })}>
                   <Image
                     source={require('../assets/icons_real/icon_diskusi.png')}
                   />

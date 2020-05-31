@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet,
-         Text, 
-         View, 
-         Image, 
-      } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class diskusiBarang extends Component {
   constructor(props) {
     super(props);
-    this.state = { };
+    this.state = {};
   }
-  
+
   render() {
     return (
       <View style={styles.container}>

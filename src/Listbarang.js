@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   Image,
@@ -7,8 +7,8 @@ import {
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
-import {Actions} from 'react-native-router-flux';
-import {Col, Row, Grid} from 'react-native-easy-grid';
+import { Actions } from 'react-native-router-flux';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 import {
   Root,
   Content,
@@ -36,14 +36,14 @@ export default class Pencarian extends Component {
     return (
       <Root>
         <Container>
-          <Header style={{backgroundColor: '#F05E23', height: 100}}>
+          <Header style={{ backgroundColor: '#F05E23', height: 100 }}>
             <View
-              style={{flex: 1, flexDirection: 'column', paddingVertical: 10}}>
-              <View style={{flexDirection: 'row'}}>
+              style={{ flex: 1, flexDirection: 'column', paddingVertical: 10 }}>
+              <View style={{ flexDirection: 'row' }}>
                 <Button transparent>
                   <IconSimple
                     name="grid"
-                    style={{marginRight: 10, fontSize: 25, color: 'white'}}
+                    style={{ marginRight: 10, fontSize: 25, color: 'white' }}
                   />
                 </Button>
                 <View
@@ -59,36 +59,48 @@ export default class Pencarian extends Component {
                     marginBottom: 5,
                   }}>
                   <View
-                    style={{flexDirection: 'column', justifyContent: 'center'}}>
+                    style={{
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                    }}>
                     <IconAwesome name="search" size={20} color="#494949" />
                   </View>
                   <TextInput
                     placeholder="Cari Barang Sumbangan       "
-                    style={{paddingRight: 15, fontFamily: 'Montserrat-Regular'}}
+                    style={{
+                      paddingRight: 15,
+                      fontFamily: 'Montserrat-Regular',
+                    }}
                   />
                 </View>
               </View>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Button
                   transparent
-                  style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+                  style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                   <IconAwesome
                     name="sort-numeric-asc"
                     size={25}
                     color="white"
                   />
                   <Text
-                    style={{color: 'white', fontFamily: 'Montserrat-Regular'}}>
+                    style={{
+                      color: 'white',
+                      fontFamily: 'Montserrat-Regular',
+                    }}>
                     {' '}
                     Urutkan
                   </Text>
                 </Button>
                 <Button
                   transparent
-                  style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+                  style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                   <IconAwesome name="filter" size={25} color="white" />
                   <Text
-                    style={{color: 'white', fontFamily: 'Montserrat-Regular'}}>
+                    style={{
+                      color: 'white',
+                      fontFamily: 'Montserrat-Regular',
+                    }}>
                     Saring
                   </Text>
                 </Button>
@@ -96,7 +108,7 @@ export default class Pencarian extends Component {
             </View>
           </Header>
 
-          <Content style={{paddingHorizontal: 15, paddingTop: 10}}>
+          <Content style={{ paddingHorizontal: 15, paddingTop: 10 }}>
             <Grid>
               <Col size={50}>
                 <Card>
@@ -106,7 +118,7 @@ export default class Pencarian extends Component {
                         uri:
                           'https://cdn.popmama.com/content-images/post/20200304/clothes-dryer-machine-1-898cce5e08eeda95c11152b2ec24bed7_600xauto.jpg',
                       }}
-                      style={{height: 150, width: null, flex: 1}}
+                      style={{ height: 150, width: null, flex: 1 }}
                     />
                   </CardItem>
                   <CardItem>
@@ -139,7 +151,7 @@ export default class Pencarian extends Component {
                         uri:
                           'https://cdn.popmama.com/content-images/post/20200304/clothes-dryer-machine-1-898cce5e08eeda95c11152b2ec24bed7_600xauto.jpg',
                       }}
-                      style={{height: 150, width: null, flex: 1}}
+                      style={{ height: 150, width: null, flex: 1 }}
                     />
                   </CardItem>
                   <CardItem>

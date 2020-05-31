@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import {Actions} from 'react-native-router-flux';
+import React, { Component } from 'react';
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const goToListBarang = () => {
   Actions.listbarang();
@@ -29,7 +29,7 @@ export default class bottomNavbar extends Component {
         <View style={styles.isiNavbar}>
           <TouchableOpacity style={styles.icon} onPress={goToListBarang}>
             <Image
-              style={{color: '#F05E23'}}
+              style={{ color: '#F05E23' }}
               source={require('../assets/icons_real/search_on.png')}
             />
           </TouchableOpacity>

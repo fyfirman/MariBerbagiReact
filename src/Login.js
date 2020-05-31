@@ -1,12 +1,12 @@
 'use strict';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   TextInput,
   TouchableWithoutFeedback,
   StyleSheet,
   View,
 } from 'react-native';
-import {Actions} from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import {
   Button,
   ActionSheet,
@@ -27,8 +27,8 @@ import IconIonicons from 'react-native-vector-icons/Ionicons';
 import ValidationComponent from 'react-native-form-validator';
 
 var BUTTONS = [
-  {text: 'Google', icon: 'american-football', iconColor: '#2c8ef4'},
-  {text: 'Facebook', icon: 'analytics', iconColor: '#f42ced'},
+  { text: 'Google', icon: 'american-football', iconColor: '#2c8ef4' },
+  { text: 'Facebook', icon: 'analytics', iconColor: '#f42ced' },
 ];
 var DESTRUCTIVE_INDEX = 3;
 var CANCEL_INDEX = 4;
@@ -52,8 +52,8 @@ export default class Login extends ValidationComponent {
 
   _onPressButton = () => {
     this.validate({
-      email: {email: true, required: true},
-      password: {minlength: 3, required: true},
+      email: { email: true, required: true },
+      password: { minlength: 3, required: true },
     });
     if (this.isFormValid('email') && this.isFormValid('password')) {
       Actions.listbarang();
@@ -80,15 +80,15 @@ export default class Login extends ValidationComponent {
               <IconIonicons
                 onPress={goToListbarang}
                 name="ios-arrow-round-back"
-                style={{fontSize: 40, color: 'white'}}
+                style={{ fontSize: 40, color: 'white' }}
               />
               <H1
                 light
-                style={{color: '#ffffff', fontFamily: 'Montserrat-Bold'}}>
+                style={{ color: '#ffffff', fontFamily: 'Montserrat-Bold' }}>
                 MARI BERBAGI
               </H1>
               <Text
-                style={{color: '#ffffff', fontFamily: 'Montserrat-Regular'}}>
+                style={{ color: '#ffffff', fontFamily: 'Montserrat-Regular' }}>
                 Berbagi senyuman dengan menyumbang barang.{' '}
               </Text>
             </View>
@@ -110,14 +110,14 @@ export default class Login extends ValidationComponent {
                   barang layak gunamu di Mari Berbagi.
                 </Text>
 
-                <Form style={{paddingVertical: 20}}>
+                <Form style={{ paddingVertical: 20 }}>
                   <Label
-                    style={{fontSize: 13, fontFamily: 'Montserrat-Regular'}}>
+                    style={{ fontSize: 13, fontFamily: 'Montserrat-Regular' }}>
                     Email
                   </Label>
                   <TextInput
                     placeholder="Masukkan email"
-                    onChangeText={email => this.setState({email})}
+                    onChangeText={email => this.setState({ email })}
                     value={this.state.email}
                     style={{
                       backgroundColor: '#F5F5F5',
@@ -138,12 +138,12 @@ export default class Login extends ValidationComponent {
                       </Text>
                     ))}
                   <Label
-                    style={{fontSize: 13, fontFamily: 'Montserrat-Regular'}}>
+                    style={{ fontSize: 13, fontFamily: 'Montserrat-Regular' }}>
                     Password
                   </Label>
                   <TextInput
                     placeholder="Masukkan Password"
-                    onChangeText={password => this.setState({password})}
+                    onChangeText={password => this.setState({ password })}
                     value={this.state.password}
                     secureTextEntry={true}
                     style={{

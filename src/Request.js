@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {TextInput, StyleSheet, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import {
   Container,
   Header,
@@ -15,7 +15,7 @@ import {
   Footer,
   FooterTab,
 } from 'native-base';
-import {Actions} from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 
 const goToDetailBarang = () => {
   Actions.detailbarang();
@@ -39,7 +39,7 @@ export default class Request extends Component {
   render() {
     return (
       <Container>
-        <Header style={{backgroundColor: '#F05E23'}}>
+        <Header style={{ backgroundColor: '#F05E23' }}>
           <Left>
             <Button transparent>
               <Icon name="arrow-back" onPress={goToDetailBarang} />
@@ -56,7 +56,7 @@ export default class Request extends Component {
             </Text>
           </Body>
         </Header>
-        <Content style={{padding: 15}}>
+        <Content style={{ padding: 15 }}>
           <Form>
             <Text
               style={{
@@ -67,7 +67,7 @@ export default class Request extends Component {
             </Text>
             <TextInput
               placeholder="Masukkan alamat"
-              onChangeText={TextInputName => this.setState({TextInputName})}
+              onChangeText={TextInputName => this.setState({ TextInputName })}
               style={{
                 backgroundColor: '#F5F5F5',
                 borderColor: '#E4E4E4',
@@ -88,7 +88,7 @@ export default class Request extends Component {
             <TextInput
               placeholder="Masukkan nomor HP"
               keyboardType="phone-pad"
-              onChangeText={TextInputName => this.setState({TextInputName})}
+              onChangeText={TextInputName => this.setState({ TextInputName })}
               style={{
                 backgroundColor: '#F5F5F5',
                 borderColor: '#E4E4E4',

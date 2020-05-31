@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {TextInput, Alert, StyleSheet, View, Text, Image} from 'react-native';
-import {Actions} from 'react-native-router-flux';
+import React, { Component } from 'react';
+import { TextInput, Alert, StyleSheet, View, Text, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import {
   Button,
   Container,
@@ -16,13 +16,13 @@ import {
 } from 'native-base';
 //import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
-import {RadioButton} from 'react-native-paper';
+import { RadioButton } from 'react-native-paper';
 
 const goToHome = () => {
   Actions.home();
 };
 
-var radio_props = [{label: 'Baru', value: 0}, {label: 'Bekas', value: 1}];
+var radio_props = [{ label: 'Baru', value: 0 }, { label: 'Bekas', value: 1 }];
 
 export default class Berbagibarang extends Component {
   static navigationOptions = {
@@ -58,16 +58,16 @@ export default class Berbagibarang extends Component {
             "Nama Barang tidak boleh ada simbol, kecuali kurung '( )' ",
         });
       } else {
-        this.setState({nameBarangError: ''});
+        this.setState({ nameBarangError: '' });
       }
     }
   }
 
   deskripsiValidator() {
     if (this.state.deskripsiError == '') {
-      this.setState({deskripsiError: 'Isi deskripsi dulu ya'});
+      this.setState({ deskripsiError: 'Isi deskripsi dulu ya' });
     } else {
-      this.setState({deskripsiError: ''});
+      this.setState({ deskripsiError: '' });
     }
   }
 
@@ -84,7 +84,7 @@ export default class Berbagibarang extends Component {
   };
 
   render() {
-    const {checked} = this.state;
+    const { checked } = this.state;
 
     let kategoriBarang = [
       {
@@ -135,7 +135,7 @@ export default class Berbagibarang extends Component {
 
                   <Label style={styles.namaKolom}>Nama Barang</Label>
                   <TextInput
-                    onChangeText={NamaBarang => this.setState({NamaBarang})}
+                    onChangeText={NamaBarang => this.setState({ NamaBarang })}
                     style={styles.kolomInput}
                     onBlur={() => this.namaBarangValidator()}
                   />
@@ -145,7 +145,7 @@ export default class Berbagibarang extends Component {
 
                   <Label style={styles.namaKolom}>Deskripsi</Label>
                   <Textarea
-                    onChangeText={Deskripsi => this.setState({Deskripsi})}
+                    onChangeText={Deskripsi => this.setState({ Deskripsi })}
                     //style={styles.kolomInput}
                     rowSpan={5}
                     bordered
@@ -157,24 +157,26 @@ export default class Berbagibarang extends Component {
 
                   <Label style={styles.namaKolom}>Kondisi Barang</Label>
                   <View>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <View
+                      style={{ flexDirection: 'row', alignItems: 'center' }}>
                       <RadioButton
                         value="baru"
                         color="#F05E23"
                         status={checked === 'first' ? 'checked' : 'unchecked'}
                         onPress={() => {
-                          this.setState({checked: 'first'});
+                          this.setState({ checked: 'first' });
                         }}
                       />
                       <Text>Baru</Text>
                     </View>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <View
+                      style={{ flexDirection: 'row', alignItems: 'center' }}>
                       <RadioButton
                         value="bekas"
                         color="#F05E23"
                         status={checked === 'second' ? 'checked' : 'unchecked'}
                         onPress={() => {
-                          this.setState({checked: 'second'});
+                          this.setState({ checked: 'second' });
                         }}
                       />
                       <Text>Bekas</Text>
@@ -185,7 +187,7 @@ export default class Berbagibarang extends Component {
                     <Label style={styles.namaKolom}>Jumlah Barang</Label>
                     <TextInput
                       onChangeText={JumlahBarang =>
-                        this.setState({JumlahBarang})
+                        this.setState({ JumlahBarang })
                       }
                       style={styles.kolomInput}
                       onBlur={() => this.jumlahBarangValidator}

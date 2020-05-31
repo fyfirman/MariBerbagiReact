@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   TextInput,
   StyleSheet,
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
-import {Actions} from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import {
   Button,
   ActionSheet,
@@ -72,12 +72,12 @@ export default class Register extends Component {
     let nameIsValid = re_name.test(this.state.name);
 
     if (this.state.name == '') {
-      this.setState({nameError: 'Nama masih kosong nih, isi dulu ya ...'});
+      this.setState({ nameError: 'Nama masih kosong nih, isi dulu ya ...' });
     } else {
       if (!nameIsValid) {
-        this.setState({nameError: 'Isi nama lengkap sesuai KTP ya :)'});
+        this.setState({ nameError: 'Isi nama lengkap sesuai KTP ya :)' });
       } else {
-        this.setState({nameError: ''});
+        this.setState({ nameError: '' });
       }
     }
   }
@@ -87,12 +87,12 @@ export default class Register extends Component {
     let emailIsValid = re_email.test(this.state.email);
 
     if (this.state.email == '') {
-      this.setState({emailError: 'Boleh diisi Email nya dulu kakak :)'});
+      this.setState({ emailError: 'Boleh diisi Email nya dulu kakak :)' });
     } else {
       if (!emailIsValid) {
-        this.setState({emailError: 'Isi email yg valid ya'});
+        this.setState({ emailError: 'Isi email yg valid ya' });
       } else {
-        this.setState({emailError: ''});
+        this.setState({ emailError: '' });
       }
     }
   }
@@ -102,7 +102,7 @@ export default class Register extends Component {
     let usernameIsValid = re_username.test(this.state.username);
 
     if (this.state.username == '') {
-      this.setState({usernameError: 'Username harus diisi hehe..'});
+      this.setState({ usernameError: 'Username harus diisi hehe..' });
     } else {
       if (this.state.username.length < 4) {
         this.setState({
@@ -114,7 +114,7 @@ export default class Register extends Component {
             "Username ga boleh ada spasi dan simbol kecuali 'titik' dan 'underscore' ya.",
         });
       } else {
-        this.setState({usernameError: ''});
+        this.setState({ usernameError: '' });
       }
     }
   }
@@ -126,23 +126,23 @@ export default class Register extends Component {
       });
     } else {
       if (this.state.password.length < 6) {
-        this.setState({passwordError: 'Password minimal ada 6 karakter ya'});
+        this.setState({ passwordError: 'Password minimal ada 6 karakter ya' });
       } else {
-        this.setState({passwordError: ''});
+        this.setState({ passwordError: '' });
       }
     }
   }
 
   cpasswordValidator() {
     if (this.state.cpassword == '') {
-      this.setState({cpasswordError: 'Konfirmasi password dulu kuy'});
+      this.setState({ cpasswordError: 'Konfirmasi password dulu kuy' });
     } else {
       if (this.state.cpassword != this.state.password) {
         this.setState({
           cpasswordError: 'Password ga cocok! Cocoknya sama doi kali ya hehe',
         });
       } else {
-        this.setState({cpasswordError: ''});
+        this.setState({ cpasswordError: '' });
       }
     }
   }
@@ -163,11 +163,11 @@ export default class Register extends Component {
               <IconIonicons
                 onPress={goToLogin}
                 name="ios-arrow-round-back"
-                style={{fontSize: 40, color: 'white'}}
+                style={{ fontSize: 40, color: 'white' }}
               />
               <H1
                 light
-                style={{color: '#ffffff', fontFamily: 'Montserrat-Bold'}}>
+                style={{ color: '#ffffff', fontFamily: 'Montserrat-Bold' }}>
                 DAFTAR AKUN
               </H1>
             </View>
@@ -180,7 +180,7 @@ export default class Register extends Component {
                   //onChangeText={TextInputName => this.setState({ TextInputName })}
                   style={styles.textinput}
                   onChangeText={text => {
-                    this.setState({name: text});
+                    this.setState({ name: text });
                   }}
                   onBlur={() => this.nameValidator()}
                 />
@@ -192,7 +192,7 @@ export default class Register extends Component {
                   //onChangeText={TextInputEmail => this.setState({ TextInputEmail })}
                   style={styles.textinput}
                   onChangeText={text => {
-                    this.setState({email: text});
+                    this.setState({ email: text });
                   }}
                   onBlur={() => this.emailValidator()}
                 />
@@ -204,7 +204,7 @@ export default class Register extends Component {
                   //onChangeText={TextInputUsername => this.setState({ TextInputUsername })}
                   style={styles.textinput}
                   onChangeText={text => {
-                    this.setState({username: text});
+                    this.setState({ username: text });
                   }}
                   onBlur={() => this.usernameValidator()}
                 />
@@ -218,7 +218,7 @@ export default class Register extends Component {
                   //onChangeText={TextInputPassword => this.setState({ TextInputPassword })}
                   style={styles.textinput}
                   onChangeText={text => {
-                    this.setState({password: text});
+                    this.setState({ password: text });
                   }}
                   secureTextEntry={true}
                   onBlur={() => this.passwordValidator()}
@@ -233,7 +233,7 @@ export default class Register extends Component {
                   //onChangeText={TextInputCpassword => this.setState({ TextInputCpassword })}
                   style={styles.textinput}
                   onChangeText={text => {
-                    this.setState({cpassword: text});
+                    this.setState({ cpassword: text });
                   }}
                   secureTextEntry={true}
                   onBlur={() => this.cpasswordValidator()}
@@ -261,7 +261,7 @@ export default class Register extends Component {
                 <Text>Masuk</Text>
               </Button>
 
-              <View style={{marginTop: 10, marginBottom: 10}}>
+              <View style={{ marginTop: 10, marginBottom: 10 }}>
                 <Text style={styles.punyaAkun}>
                   Sudah punya akun ?{' '}
                   <TouchableWithoutFeedback onPress={goToLogin}>

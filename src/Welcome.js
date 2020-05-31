@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {StyleSheet, View, Text, ImageBackground} from 'react-native';
-import {Button} from 'native-base';
-import {Actions} from 'react-native-router-flux';
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { Button } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 const goToLogin = () => {
   Actions.login();
