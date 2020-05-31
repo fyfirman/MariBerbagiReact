@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, 
          Text, 
          View, 
-         Image, 
+         Image,
+         TouchableOpacity,
     } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Root, 
@@ -11,6 +12,10 @@ import { Root,
          Card,  
     } from 'native-base';
 import BottomNav from '../components/bottomNavbar';
+
+const goToStatusBarang = () => {
+    Actions.statusbarang()
+}
 
 export default class Profile extends Component{
     static navigationOptions = {
@@ -47,7 +52,7 @@ export default class Profile extends Component{
                             
                         <View style={styles.kartuBarang}>
 
-                            <View style={{flexDirection: 'column'}}>
+                            <TouchableOpacity style={{flexDirection: 'column'}} onPress={goToStatusBarang} >
                                 <Image source={require('../assets/images/macOS5.jpg')} style={styles.fotoBarang} />                        
                                 <View style={styles.boxKet}>
                                     <Text>Pakaian Bekas Warna Biru</Text>
@@ -56,9 +61,9 @@ export default class Profile extends Component{
                                             <Text style={styles.ketBarang}>3 Peminat</Text>
                                         </View>
                                 </View>
-                            </View>
+                            </TouchableOpacity>
                                 
-                            <View style={{flexDirection: 'column'}}>
+                            <TouchableOpacity style={{flexDirection: 'column'}} onPress={goToStatusBarang}>
                                 <Image source={require('../assets/images/macOS5.jpg')} style={styles.fotoBarang} />                        
                                 <View style={styles.boxKet}>
                                     <Text>Pakaian Bekas Warna Biru</Text>
@@ -67,7 +72,7 @@ export default class Profile extends Component{
                                         <Text style={styles.ketBarang}>3 Peminat</Text>
                                     </View>
                                 </View>
-                            </View>
+                            </TouchableOpacity>
 
                         </View>
 

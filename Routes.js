@@ -14,6 +14,7 @@ import Listkampanye from './src/Listkampanye';
 import Listbarang from './src/Listbarang';
 import Request from './src/Request';
 import Aturanpenggunaan from './src/Aturanpenggunaan';
+import Statusbarang from './src/Statusbarang';
 
 const Routes = () => (
   <Router>
@@ -47,6 +48,11 @@ const Routes = () => (
         key="aturanpenggunaan"
         component={Aturanpenggunaan}
         title="Aturanpenggunaan"
+      />
+      <Scene
+        key="statusbarang"
+        component={Statusbarang}
+        title="Statusbarang"
       />
     </Scene>
   </Router>

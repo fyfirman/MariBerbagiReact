@@ -51,6 +51,9 @@ const Home = () => {
     const goToRequest = () => {
         Actions.request()
     }
+    const goToStatusbarang = () => {
+        Actions.statusbarang()
+    }
     
     return (
         <Container style={styles.container}>
@@ -90,6 +93,9 @@ const Home = () => {
                 </Button>
                 <Button bordered onPress={goToRequest} style={styles.button}>
                     <Text>Request</Text>
+                </Button>
+                <Button bordered onPress={goToStatusbarang} style={styles.button}>
+                    <Text>Status Barang</Text>
                 </Button>
             </Content>
         </Container>
