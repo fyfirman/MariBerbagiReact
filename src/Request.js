@@ -5,15 +5,12 @@ import {
   Header,
   Left,
   Body,
-  Right,
   Button,
   Icon,
   Textarea,
   Text,
   Form,
   Content,
-  Footer,
-  FooterTab,
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 

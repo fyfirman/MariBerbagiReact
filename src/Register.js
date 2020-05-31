@@ -8,7 +8,6 @@ import {
 import { Actions } from 'react-native-router-flux';
 import {
   Button,
-  ActionSheet,
   Container,
   Card,
   Content,
@@ -18,13 +17,7 @@ import {
   Label,
   Root,
 } from 'native-base';
-import ButtonPrimary from './elements/ButtonPrimary';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
-import ValidationComponent from 'react-native-form-validator';
-
-const goToListbarang = () => {
-  Actions.listbarang();
-};
 
 const goToAturanpenggunaan = () => {
   Actions.aturanpenggunaan();

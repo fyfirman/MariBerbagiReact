@@ -7,8 +7,6 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
-  Button,
-  ActionSheet,
   Container,
   Card,
   Content,

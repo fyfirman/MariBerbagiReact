@@ -1,5 +1,5 @@
 'use strict';
-import React, { Component } from 'react';
+import React from 'react';
 import {
   TextInput,
   TouchableWithoutFeedback,
@@ -9,29 +9,17 @@ import {
 import { Actions } from 'react-native-router-flux';
 import {
   Button,
-  ActionSheet,
   Container,
   Card,
   Content,
   Text,
   H1,
   Form,
-  Item,
   Label,
-  Input,
   Root,
 } from 'native-base';
-import ButtonPrimary from './elements/ButtonPrimary';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import ValidationComponent from 'react-native-form-validator';
-
-var BUTTONS = [
-  { text: 'Google', icon: 'american-football', iconColor: '#2c8ef4' },
-  { text: 'Facebook', icon: 'analytics', iconColor: '#f42ced' },
-];
-var DESTRUCTIVE_INDEX = 3;
-var CANCEL_INDEX = 4;
 
 const goToListbarang = () => {
   Actions.listbarang();

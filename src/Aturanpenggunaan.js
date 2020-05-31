@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import {
-  TextInput,
-  StyleSheet,
-  View,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Container, Content, Text, H1, Root } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';

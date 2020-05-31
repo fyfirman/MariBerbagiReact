@@ -14,7 +14,6 @@ import {
   Root,
   Textarea,
 } from 'native-base';
-//import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import { RadioButton } from 'react-native-paper';
 

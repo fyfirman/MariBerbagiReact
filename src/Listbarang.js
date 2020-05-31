@@ -3,12 +3,11 @@ import {
   Text,
   Image,
   TextInput,
-  StyleSheet,
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Col, Grid } from 'react-native-easy-grid';
 import {
   Root,
   Content,
@@ -188,19 +187,4 @@ export default class Pencarian extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#FFE8C5',
-    marginVertical: 5,
-    borderRadius: 5,
-  },
-  buttonPrimary: {
-    backgroundColor: '#F05E23',
-    marginVertical: 5,
-    borderRadius: 5,
-  },
-  container: {
-    paddingTop: 5,
-    paddingHorizontal: 10,
-  },
-});
+
