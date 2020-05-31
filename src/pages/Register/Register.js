@@ -19,13 +19,9 @@ import {
 } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 
-const goToAturanpenggunaan = () => {
-  Actions.aturanpenggunaan();
-};
+import customStyle from './styles';
 
-const goToLogin = () => {
-  Actions.login();
-};
+const styles = customStyle;
 
 export default class Register extends Component {
   static navigationOptions = {
@@ -36,30 +32,31 @@ export default class Register extends Component {
     super(props);
     this.state = {
       name: '',
-      nameError: '',
       email: '',
-      emailError: '',
       username: '',
-      usernameError: '',
       password: '',
-      passwordError: '',
       cpassword: '',
+      nameError: '',
+      emailError: '',
+      usernameError: '',
+      passwordError: '',
       cpasswordError: '',
     };
   }
 
+  goToAturanpenggunaan = () => {
+    Actions.aturanpenggunaan();
+  };
+
+  goToLogin = () => {
+    Actions.login();
+  };
+
   _onPressButton = () => {
-    //this.validate({
-    //email: {email: true, required: true},
-    //password: {minlength: 3, required: true},
-    //});
-    //if (this.isFormValid('email') && this.isFormValid('password')) {
     Actions.listbarang();
-    //}
   };
 
   // Kumpulan function input Validator sesuai field pada form registrasi
-
   nameValidator() {
     const re_name = /^[A-Za-z\s]+$/;
     let nameIsValid = re_name.test(this.state.name);
@@ -145,16 +142,9 @@ export default class Register extends Component {
       <Root>
         <Container>
           <Content style={styles.container}>
-            <View
-              style={{
-                backgroundColor: '#F05E23',
-                paddingTop: 50,
-                paddingBottom: 70,
-                paddingHorizontal: 30,
-                marginBottom: -40,
-              }}>
+            <View style={styles.header}>
               <IconIonicons
-                onPress={goToLogin}
+                onPress={this.goToLogin}
                 name="ios-arrow-round-back"
                 style={{ fontSize: 40, color: 'white' }}
               />
@@ -170,7 +160,6 @@ export default class Register extends Component {
                 <Label style={styles.label}>Nama Lengkap</Label>
                 <TextInput
                   placeholder="Masukkan Nama Lengkap"
-                  //onChangeText={TextInputName => this.setState({ TextInputName })}
                   style={styles.textinput}
                   onChangeText={text => {
                     this.setState({ name: text });
@@ -182,7 +171,6 @@ export default class Register extends Component {
                 <Label style={styles.label}>Alamat Email</Label>
                 <TextInput
                   placeholder="Masukkan Alamat E-mail"
-                  //onChangeText={TextInputEmail => this.setState({ TextInputEmail })}
                   style={styles.textinput}
                   onChangeText={text => {
                     this.setState({ email: text });
@@ -194,7 +182,6 @@ export default class Register extends Component {
                 <Label style={styles.label}>Username</Label>
                 <TextInput
                   placeholder="Isi Username yang kamu ingin"
-                  //onChangeText={TextInputUsername => this.setState({ TextInputUsername })}
                   style={styles.textinput}
                   onChangeText={text => {
                     this.setState({ username: text });
@@ -208,7 +195,6 @@ export default class Register extends Component {
                 <Label style={styles.label}>Password</Label>
                 <TextInput
                   placeholder="Buat Password yang kuat"
-                  //onChangeText={TextInputPassword => this.setState({ TextInputPassword })}
                   style={styles.textinput}
                   onChangeText={text => {
                     this.setState({ password: text });
@@ -223,7 +209,6 @@ export default class Register extends Component {
                 <Label style={styles.label}>Konfirmasi Password</Label>
                 <TextInput
                   placeholder="Isi lagi password kamu disini ya"
-                  //onChangeText={TextInputCpassword => this.setState({ TextInputCpassword })}
                   style={styles.textinput}
                   onChangeText={text => {
                     this.setState({ cpassword: text });
@@ -239,7 +224,7 @@ export default class Register extends Component {
               <Content style={styles.content}>
                 <Text style={styles.term}>
                   Dengan mendaftar akun Mari Berbagi saya menyetujui{' '}
-                  <TouchableWithoutFeedback onPress={goToAturanpenggunaan}>
+                  <TouchableWithoutFeedback onPress={this.goToAturanpenggunaan}>
                     <Text style={styles.aturan}>
                       Aturan Penggunaan Mari Berbagi
                     </Text>
@@ -257,30 +242,13 @@ export default class Register extends Component {
               <View style={{ marginTop: 10, marginBottom: 10 }}>
                 <Text style={styles.punyaAkun}>
                   Sudah punya akun ?{' '}
-                  <TouchableWithoutFeedback onPress={goToLogin}>
+                  <TouchableWithoutFeedback onPress={this.goToLogin}>
                     <Text numberOfLines={1} style={styles.punyaAkunLogin}>
                       Log in
                     </Text>
                   </TouchableWithoutFeedback>
                 </Text>
               </View>
-
-              {/*<Text style={{textAlign:"center",color:"#8E8E8E"}}>atau daftar dengan</Text>
-                  <Button block light style={styles.button}
-                        onPress={() =>
-                        ActionSheet.show(
-                        {
-                           options: BUTTONS,
-                           cancelButtonIndex: CANCEL_INDEX,
-                           destructiveButtonIndex: DESTRUCTIVE_INDEX,
-                           title: "daftar dengan Akun Media Sosial"
-                        },
-                        buttonIndex => {
-                           this.setState({ clicked: BUTTONS[buttonIndex] });
-                        }
-                        )}>
-                     <Text>Akun Media Sosial</Text>
-                     </Button> */}
             </Card>
           </Content>
         </Container>
@@ -288,78 +256,3 @@ export default class Register extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: '#F05E23',
-  },
-  arrow: {
-    fontSize: 40,
-    color: 'white',
-  },
-  card: {
-    borderRadius: 20,
-    padding: 20,
-    marginBottom: 20,
-    marginLeft: 15,
-    marginRight: 15,
-  },
-  form: {
-    paddingTop: 10,
-  },
-  label: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 13,
-    color: 'black',
-  },
-  notifError: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 13,
-    color: 'red',
-  },
-  textinput: {
-    backgroundColor: '#F5F5F5',
-    borderColor: '#E4E4E4',
-    borderRadius: 5,
-    paddingHorizontal: 10,
-  },
-  content: {
-    paddingTop: 5,
-    paddingBottom: 5,
-  },
-  term: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 14,
-    textAlign: 'center',
-    color: 'grey',
-  },
-  aturan: {
-    color: '#F05E23',
-  },
-  punyaAkun: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 12,
-    textAlign: 'center',
-    color: '#8E8E8E',
-  },
-  punyaAkunLogin: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 12,
-    paddingLeft: 5,
-    color: '#F05E23',
-  },
-  button: {
-    backgroundColor: '#FFE8C5',
-    marginVertical: 5,
-    borderRadius: 5,
-  },
-  buttonPrimary: {
-    backgroundColor: '#F05E23',
-    marginVertical: 5,
-    borderRadius: 5,
-  },
-  container: {
-    //paddingTop: 5,
-    //paddingHorizontal: 10
-  },
-});
