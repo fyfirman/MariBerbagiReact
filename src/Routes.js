@@ -17,7 +17,7 @@ import {
   Request,
   Aturanpenggunaan,
   Statusbarang,
-} from './src';
+} from './pages';
 
 const Routes = () => (
   <Router>

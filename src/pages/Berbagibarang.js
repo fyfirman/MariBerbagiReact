@@ -123,12 +123,12 @@ export default class Berbagibarang extends Component {
                     <Image
                       style={styles.image2}
                       //resizeMode="contain"
-                      source={require('../assets/images/macOS5.jpg')}
+                      source={require('../../assets/images/macOS5.jpg')}
                     />
                     <Image
                       style={styles.image3}
                       //resizeMode="contain"
-                      source={require('../assets/images/macOS5.jpg')}
+                      source={require('../../assets/images/macOS5.jpg')}
                     />
                   </View>
 

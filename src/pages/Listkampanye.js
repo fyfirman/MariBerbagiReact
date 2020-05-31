@@ -43,7 +43,7 @@ export default class Listkampanye extends Component {
 
             <View style={styles.cardKampanye}>
               <Image
-                source={require('../assets/images/macOS5.jpg')}
+                source={require('../../assets/images/macOS5.jpg')}
                 style={styles.foto}
               />
               <View style={styles.isiKampanye}>
@@ -62,7 +62,7 @@ export default class Listkampanye extends Component {
 
             <View style={styles.cardKampanye}>
               <Image
-                source={require('../assets/images/macOS5.jpg')}
+                source={require('../../assets/images/macOS5.jpg')}
                 style={styles.foto}
               />
               <View style={styles.isiKampanye}>

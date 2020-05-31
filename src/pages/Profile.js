@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { Root, Content, Card, Button, Container } from 'native-base';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { Root, Container, Content, Card } from 'native-base';
 import BottomNav from '../components/bottomNavbar';
 
-export default class Profileverified extends Component {
+const goToStatusBarang = () => {
+  Actions.statusbarang();
+};
+
+export default class Profile extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -15,7 +20,7 @@ export default class Profileverified extends Component {
           <Content>
             <View style={styles.header}>
               <Image
-                source={require('../assets/images/macOS5.jpg')}
+                source={require('../../assets/images/macOS5.jpg')}
                 style={styles.profpic}
               />
 
@@ -24,14 +29,14 @@ export default class Profileverified extends Component {
 
                 <View style={styles.verifStatus}>
                   <Image
-                    source={require('../assets/icons_real/centang_verified.png')}
+                    source={require('../../assets/icons_real/centang_Unverified.png')}
                   />
-                  <Text style={styles.verif}>Akun Terverifikasi</Text>
+                  <Text style={styles.verif}>Akun Belum Terverifikasi</Text>
                 </View>
               </View>
 
               <Image
-                source={require('../assets/icons_real/Setting.png')}
+                source={require('../../assets/icons_real/Setting.png')}
                 style={styles.setting}
               />
             </View>
@@ -43,9 +48,11 @@ export default class Profileverified extends Component {
               </View>
 
               <View style={styles.kartuBarang}>
-                <View style={{ flexDirection: 'column' }}>
+                <TouchableOpacity
+                  style={{ flexDirection: 'column' }}
+                  onPress={goToStatusBarang}>
                   <Image
-                    source={require('../assets/images/macOS5.jpg')}
+                    source={require('../../assets/images/macOS5.jpg')}
                     style={styles.fotoBarang}
                   />
                   <View style={styles.boxKet}>
@@ -55,11 +62,13 @@ export default class Profileverified extends Component {
                       <Text style={styles.ketBarang}>3 Peminat</Text>
                     </View>
                   </View>
-                </View>
+                </TouchableOpacity>
 
-                <View style={{ flexDirection: 'column' }}>
+                <TouchableOpacity
+                  style={{ flexDirection: 'column' }}
+                  onPress={goToStatusBarang}>
                   <Image
-                    source={require('../assets/images/macOS5.jpg')}
+                    source={require('../../assets/images/macOS5.jpg')}
                     style={styles.fotoBarang}
                   />
                   <View style={styles.boxKet}>
@@ -69,7 +78,7 @@ export default class Profileverified extends Component {
                       <Text style={styles.ketBarang}>3 Peminat</Text>
                     </View>
                   </View>
-                </View>
+                </TouchableOpacity>
               </View>
 
               <View style={styles.ket2}>
@@ -80,7 +89,7 @@ export default class Profileverified extends Component {
               <View style={styles.kartuBarang}>
                 <View style={{ flexDirection: 'column' }}>
                   <Image
-                    source={require('../assets/images/macOS5.jpg')}
+                    source={require('../../assets/images/macOS5.jpg')}
                     style={styles.fotoBarang}
                   />
                   <View style={styles.boxKet}>
@@ -94,7 +103,7 @@ export default class Profileverified extends Component {
 
                 <View style={{ flexDirection: 'column' }}>
                   <Image
-                    source={require('../assets/images/macOS5.jpg')}
+                    source={require('../../assets/images/macOS5.jpg')}
                     style={styles.fotoBarang}
                   />
                   <View style={styles.boxKet}>
@@ -108,13 +117,13 @@ export default class Profileverified extends Component {
               </View>
 
               <Text style={styles.myCampaign}>Kampanye Saya</Text>
-              <Button block style={styles.buttonPrimary}>
-                <Text style={styles.tulisanButton}>BUAT KAMPANYE</Text>
-              </Button>
+              <Text style={styles.ketMyCampaign}>
+                Hanya untuk Akun Terverifikasi
+              </Text>
             </Card>
           </Content>
 
-          <View style={styles.navbar}>
+          <View>
             <BottomNav />
           </View>
         </Container>
@@ -158,7 +167,7 @@ const styles = StyleSheet.create({
   },
   setting: {
     marginTop: 25,
-    marginLeft: 70,
+    marginLeft: 30,
   },
   cardUtama: {
     borderRadius: 20,
@@ -230,15 +239,5 @@ const styles = StyleSheet.create({
     color: 'grey',
     paddingHorizontal: 7,
     paddingTop: 5,
-  },
-  buttonPrimary: {
-    backgroundColor: '#F05E23',
-    marginVertical: 5,
-    borderRadius: 5,
-  },
-  tulisanButton: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 12,
-    color: 'white',
   },
 });

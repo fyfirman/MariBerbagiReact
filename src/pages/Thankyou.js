@@ -17,7 +17,7 @@ export default class Thankyou extends Component {
       <View style={styles.page}>
         <View>
           <Image
-            source={require('../assets/images/bigThanks.png')}
+            source={require('../../assets/images/bigThanks.png')}
             style={styles.bigThanksWrap}
           />
         </View>

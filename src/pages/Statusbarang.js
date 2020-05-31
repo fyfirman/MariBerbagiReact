@@ -49,7 +49,7 @@ export default class Statusbarang extends Component {
 
             <View style={styles.cardBarang}>
               <Image
-                source={require('../assets/images/macOS5.jpg')}
+                source={require('../../assets/images/macOS5.jpg')}
                 style={styles.fotoBarang}
               />
               <View style={styles.ketBarang}>
@@ -81,7 +81,7 @@ export default class Statusbarang extends Component {
                   </Text>
                 </View>
                 <Image
-                  source={require('../assets/images/macOS5.jpg')}
+                  source={require('../../assets/images/macOS5.jpg')}
                   style={styles.fotoBarang}
                 />
               </View>
@@ -103,7 +103,7 @@ export default class Statusbarang extends Component {
                   </Text>
                 </View>
                 <Image
-                  source={require('../assets/images/macOS5.jpg')}
+                  source={require('../../assets/images/macOS5.jpg')}
                   style={styles.fotoBarang}
                 />
               </View>
@@ -125,7 +125,7 @@ export default class Statusbarang extends Component {
                   </Text>
                 </View>
                 <Image
-                  source={require('../assets/images/macOS5.jpg')}
+                  source={require('../../assets/images/macOS5.jpg')}
                   style={styles.fotoBarang}
                 />
               </View>

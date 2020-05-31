@@ -30,28 +30,28 @@ export default class bottomNavbar extends Component {
           <TouchableOpacity style={styles.icon} onPress={goToListBarang}>
             <Image
               style={{ color: '#F05E23' }}
-              source={require('../assets/icons_real/search_on.png')}
+              source={require('../../assets/icons_real/search_on.png')}
             />
           </TouchableOpacity>
         </View>
         <View style={styles.isiNavbar}>
           <TouchableOpacity style={styles.icon} onPress={goToListKampanye}>
-            <Image source={require('../assets/icons_real/kampanye.png')} />
+            <Image source={require('../../assets/icons_real/kampanye.png')} />
           </TouchableOpacity>
         </View>
         <View>
           <TouchableOpacity style={styles.iconPost} onPress={goToBerbagiBarang}>
-            <Image source={require('../assets/icons_B/post_B.png')} />
+            <Image source={require('../../assets/icons_B/post_B.png')} />
           </TouchableOpacity>
         </View>
         <View style={styles.isiNavbar}>
           <TouchableOpacity style={styles.icon}>
-            <Image source={require('../assets/icons_real/chat.png')} />
+            <Image source={require('../../assets/icons_real/chat.png')} />
           </TouchableOpacity>
         </View>
         <View style={styles.isiNavbar}>
           <TouchableOpacity style={styles.icon} onPress={goToProfile}>
-            <Image source={require('../assets/icons_real/user.png')} />
+            <Image source={require('../../assets/icons_real/user.png')} />
           </TouchableOpacity>
         </View>
       </View>

@@ -17,7 +17,7 @@ import {
   Root,
   Header,
 } from 'native-base';
-import ButtonPrimary from './elements/ButtonPrimary';
+import ButtonPrimary from '../elements/ButtonPrimary';
 //import ButtonSecondary from './elements/ButtonSecondary';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 import IconIonicons from 'react-native-vector-icons/Ionicons';

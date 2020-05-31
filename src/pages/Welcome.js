@@ -16,7 +16,7 @@ export default class Welcome extends Component {
     return (
       <View style={styles.container}>
         <ImageBackground
-          source={require('../assets/images/welcome.png')}
+          source={require('../../assets/images/welcome.png')}
           style={styles.image}>
           <Text style={styles.judul}>MARI BERBAGI</Text>
           <Text style={styles.pesan}>

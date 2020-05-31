@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import { Root, Container, Content, Card } from 'native-base';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { Root, Content, Card, Button, Container } from 'native-base';
 import BottomNav from '../components/bottomNavbar';
 
-const goToStatusBarang = () => {
-  Actions.statusbarang();
-};
-
-export default class Profile extends Component {
+export default class Profileverified extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -20,7 +15,7 @@ export default class Profile extends Component {
           <Content>
             <View style={styles.header}>
               <Image
-                source={require('../assets/images/macOS5.jpg')}
+                source={require('../../assets/images/macOS5.jpg')}
                 style={styles.profpic}
               />
 
@@ -29,14 +24,14 @@ export default class Profile extends Component {
 
                 <View style={styles.verifStatus}>
                   <Image
-                    source={require('../assets/icons_real/centang_Unverified.png')}
+                    source={require('../../assets/icons_real/centang_verified.png')}
                   />
-                  <Text style={styles.verif}>Akun Belum Terverifikasi</Text>
+                  <Text style={styles.verif}>Akun Terverifikasi</Text>
                 </View>
               </View>
 
               <Image
-                source={require('../assets/icons_real/Setting.png')}
+                source={require('../../assets/icons_real/Setting.png')}
                 style={styles.setting}
               />
             </View>
@@ -48,48 +43,9 @@ export default class Profile extends Component {
               </View>
 
               <View style={styles.kartuBarang}>
-                <TouchableOpacity
-                  style={{ flexDirection: 'column' }}
-                  onPress={goToStatusBarang}>
-                  <Image
-                    source={require('../assets/images/macOS5.jpg')}
-                    style={styles.fotoBarang}
-                  />
-                  <View style={styles.boxKet}>
-                    <Text>Pakaian Bekas Warna Biru</Text>
-                    <View style={styles.isiKet}>
-                      <Text style={styles.ketBarang}>Kondisi 70%</Text>
-                      <Text style={styles.ketBarang}>3 Peminat</Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  style={{ flexDirection: 'column' }}
-                  onPress={goToStatusBarang}>
-                  <Image
-                    source={require('../assets/images/macOS5.jpg')}
-                    style={styles.fotoBarang}
-                  />
-                  <View style={styles.boxKet}>
-                    <Text>Pakaian Bekas Warna Biru</Text>
-                    <View style={styles.isiKet}>
-                      <Text style={styles.ketBarang}>Kondisi 70%</Text>
-                      <Text style={styles.ketBarang}>3 Peminat</Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              </View>
-
-              <View style={styles.ket2}>
-                <Text style={styles.ketSaya}>Minat saya</Text>
-                <Text style={styles.ketSemua}>Lihat Semua</Text>
-              </View>
-
-              <View style={styles.kartuBarang}>
                 <View style={{ flexDirection: 'column' }}>
                   <Image
-                    source={require('../assets/images/macOS5.jpg')}
+                    source={require('../../assets/images/macOS5.jpg')}
                     style={styles.fotoBarang}
                   />
                   <View style={styles.boxKet}>
@@ -103,7 +59,42 @@ export default class Profile extends Component {
 
                 <View style={{ flexDirection: 'column' }}>
                   <Image
-                    source={require('../assets/images/macOS5.jpg')}
+                    source={require('../../assets/images/macOS5.jpg')}
+                    style={styles.fotoBarang}
+                  />
+                  <View style={styles.boxKet}>
+                    <Text>Pakaian Bekas Warna Biru</Text>
+                    <View style={styles.isiKet}>
+                      <Text style={styles.ketBarang}>Kondisi 70%</Text>
+                      <Text style={styles.ketBarang}>3 Peminat</Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+
+              <View style={styles.ket2}>
+                <Text style={styles.ketSaya}>Minat saya</Text>
+                <Text style={styles.ketSemua}>Lihat Semua</Text>
+              </View>
+
+              <View style={styles.kartuBarang}>
+                <View style={{ flexDirection: 'column' }}>
+                  <Image
+                    source={require('../../assets/images/macOS5.jpg')}
+                    style={styles.fotoBarang}
+                  />
+                  <View style={styles.boxKet}>
+                    <Text>Pakaian Bekas Warna Biru</Text>
+                    <View style={styles.isiKet}>
+                      <Text style={styles.ketBarang}>Kondisi 70%</Text>
+                      <Text style={styles.ketBarang}>3 Peminat</Text>
+                    </View>
+                  </View>
+                </View>
+
+                <View style={{ flexDirection: 'column' }}>
+                  <Image
+                    source={require('../../assets/images/macOS5.jpg')}
                     style={styles.fotoBarang}
                   />
                   <View style={styles.boxKet}>
@@ -117,13 +108,13 @@ export default class Profile extends Component {
               </View>
 
               <Text style={styles.myCampaign}>Kampanye Saya</Text>
-              <Text style={styles.ketMyCampaign}>
-                Hanya untuk Akun Terverifikasi
-              </Text>
+              <Button block style={styles.buttonPrimary}>
+                <Text style={styles.tulisanButton}>BUAT KAMPANYE</Text>
+              </Button>
             </Card>
           </Content>
 
-          <View>
+          <View style={styles.navbar}>
             <BottomNav />
           </View>
         </Container>
@@ -167,7 +158,7 @@ const styles = StyleSheet.create({
   },
   setting: {
     marginTop: 25,
-    marginLeft: 30,
+    marginLeft: 70,
   },
   cardUtama: {
     borderRadius: 20,
@@ -239,5 +230,15 @@ const styles = StyleSheet.create({
     color: 'grey',
     paddingHorizontal: 7,
     paddingTop: 5,
+  },
+  buttonPrimary: {
+    backgroundColor: '#F05E23',
+    marginVertical: 5,
+    borderRadius: 5,
+  },
+  tulisanButton: {
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 12,
+    color: 'white',
   },
 });

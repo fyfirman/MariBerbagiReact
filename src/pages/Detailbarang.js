@@ -4,21 +4,25 @@ import {
   View,
   Image,
   TextInput,
+  Text,
   TouchableOpacity,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Container, Content, Text, Root } from 'native-base';
+import { Root, Container, Content } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
-import DeskripsiKampanye from '../components/deskripsiKampanye';
-import PeminatKampanye from '../components/peminatKampanye';
-import PengirimKampanye from '../components/pengirimKampanye';
-import DiskusiKampanye from '../components/diskusiKampanye';
+import DeskripsiBarang from '../components/deskripsiBarang';
+import PeminatBarang from '../components/peminatBarang';
+import DiskusiBarang from '../components/diskusiBarang';
 
-const goToHome = () => {
-  Actions.home();
+const goToListbarang = () => {
+  Actions.listbarang();
 };
 
-export default class Detailkampanye extends Component {
+const goToRequest = () => {
+  Actions.request();
+};
+
+export default class Detailbarang extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -28,19 +32,16 @@ export default class Detailkampanye extends Component {
     this.state = {
       val: 1,
       jumPeminat: 3,
-      jumPengirim: 1,
     };
   }
 
   renderElement() {
-    if (this.state.val == 'diskusiKampanye') {
-      return <DiskusiKampanye />;
-    } else if (this.state.val == 'peminatKampanye') {
-      return <PeminatKampanye />;
-    } else if (this.state.val == 'pengirimKampanye') {
-      return <PengirimKampanye />;
+    if (this.state.val == 'diskusiBarang') {
+      return <DiskusiBarang />;
+    } else if (this.state.val == 'peminatBarang') {
+      return <PeminatBarang />;
     } else {
-      return <DeskripsiKampanye />;
+      return <DeskripsiBarang />;
     }
   }
 
@@ -51,19 +52,19 @@ export default class Detailkampanye extends Component {
           <View style={styles.header}>
             <View>
               <IconIonicons
-                onPress={goToHome}
+                onPress={goToListbarang}
                 name="ios-arrow-round-back"
                 style={styles.arrow}
               />
             </View>
             <View style={styles.barWrapper}>
               <TextInput
-                placeholder="Cari Kampanye "
+                placeholder="Cari Barang Sumbangan"
                 placeholderTextColor="black"
                 style={styles.searchBar}
               />
               <Image
-                source={require('../assets/images/search.png')}
+                source={require('../../assets/images/search.png')}
                 style={styles.searchLogo}
               />
             </View>
@@ -75,28 +76,32 @@ export default class Detailkampanye extends Component {
                 rounded
                 style={styles.image1}
                 //resizeMode="contain"
-                source={require('../assets/images/macOS5.jpg')}
+                source={require('../../assets/images/macOS5.jpg')}
               />
             </View>
             <View style={styles.view2}>
               <Image
                 style={styles.image2}
                 //resizeMode="contain"
-                source={require('../assets/images/macOS5.jpg')}
+                source={require('../../assets/images/macOS5.jpg')}
               />
               <Image
                 style={styles.image3}
                 //resizeMode="contain"
-                source={require('../assets/images/macOS5.jpg')}
+                source={require('../../assets/images/macOS5.jpg')}
               />
             </View>
 
             <View>
-              <Text style={styles.namaBarang}>
-                Butuh 20 Lusin Pakaian Bekas untuk Korban Gempa Sulawesi
-              </Text>
+              <Text style={styles.namaBarang}>Pakaian Bekas Warna Biru</Text>
               {/*Pengirim*/}
-              <Text style={styles.namaPengirim}>Dari Firmansyah Yanuar</Text>
+              <Text style={styles.namaPengirim}>Dari Kevin Akbar Adhiguna</Text>
+              <View style={styles.ket}>
+                {/*Kondisi Barang*/}
+                <Text style={styles.ketBarang}>Kondisi 70% {'  '}</Text>
+                {/*Kategori Barang*/}
+                <Text style={styles.ketBarang}>Kategori Pakaian</Text>
+              </View>
               <View style={styles.ket}>
                 {/*Lokasi Barang*/}
                 <Text style={styles.ketBarang}>Sumatera Utara {'  '}</Text>
@@ -111,9 +116,9 @@ export default class Detailkampanye extends Component {
               <View style={styles.garis}>
                 <TouchableOpacity
                   style={styles.frag}
-                  onPress={() => this.setState({ val: 'deskripsiKampanye' })}>
+                  onPress={() => this.setState({ val: 'deskripsiBarang' })}>
                   <Image
-                    source={require('../assets/icons_real/icon_deskripsi.png')}
+                    source={require('../../assets/icons_real/icon_deskripsi.png')}
                   />
                   <Text style={styles.txtFrag}>Deskripsi</Text>
                 </TouchableOpacity>
@@ -122,7 +127,7 @@ export default class Detailkampanye extends Component {
               <View style={styles.garis}>
                 <TouchableOpacity
                   style={styles.frag}
-                  onPress={() => this.setState({ val: 'peminatKampanye' })}>
+                  onPress={() => this.setState({ val: 'peminatBarang' })}>
                   <Text style={styles.txtFrag}>
                     {this.state.jumPeminat} Peminat
                   </Text>
@@ -132,19 +137,9 @@ export default class Detailkampanye extends Component {
               <View style={styles.garis}>
                 <TouchableOpacity
                   style={styles.frag}
-                  onPress={() => this.setState({ val: 'pengirimKampanye' })}>
-                  <Text style={styles.txtFrag}>
-                    {this.state.jumPengirim} Pengirim
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              <View style={styles.garis}>
-                <TouchableOpacity
-                  style={styles.frag}
-                  onPress={() => this.setState({ val: 'diskusiKampanye' })}>
+                  onPress={() => this.setState({ val: 'diskusiBarang' })}>
                   <Image
-                    source={require('../assets/icons_real/icon_diskusi.png')}
+                    source={require('../../assets/icons_real/icon_diskusi.png')}
                   />
                   <Text style={styles.txtFrag}>Diskusi</Text>
                 </TouchableOpacity>
@@ -154,8 +149,8 @@ export default class Detailkampanye extends Component {
             <View>{this.renderElement()}</View>
           </Content>
 
-          <TouchableOpacity style={styles.buttonMinat}>
-            <Text style={styles.textMinat}>IKUT KAMPANYE</Text>
+          <TouchableOpacity style={styles.buttonMinat} onPress={goToRequest}>
+            <Text style={styles.textMinat}>MINAT MENERIMA</Text>
           </TouchableOpacity>
         </Container>
       </Root>
@@ -170,12 +165,12 @@ const styles = StyleSheet.create({
     position: 'relative',
     flexDirection: 'row',
     height: 75,
-    //justifyContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   arrow: {
     marginTop: 6,
-    marginLeft: 25,
+    marginLeft: 5,
     fontSize: 40,
     color: 'white',
   },
@@ -191,7 +186,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Regular',
     fontSize: 13,
     paddingLeft: 45,
-    paddingRight: 140,
+    paddingRight: 85,
     backgroundColor: 'white',
     marginLeft: 10,
   },
