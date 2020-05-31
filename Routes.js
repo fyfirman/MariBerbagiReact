@@ -1,20 +1,23 @@
 import React from 'react';
-import {Router, Scene} from 'react-native-router-flux';
-import Home from './src/Home';
-import Login from './src/Login';
-import Register from './src/Register';
-import Detailbarang from './src/Detailbarang';
-import Detailkampanye from './src/Detailkampanye';
-import Berbagibarang from './src/Berbagibarang';
-import Welcome from './src/Welcome';
-import Thankyou from './src/Thankyou';
-import Profile from './src/Profile';
-import Profileverified from './src/Profileverified';
-import Listkampanye from './src/Listkampanye';
-import Listbarang from './src/Listbarang';
-import Request from './src/Request';
-import Aturanpenggunaan from './src/Aturanpenggunaan';
-import Statusbarang from './src/Statusbarang';
+import { Router, Scene } from 'react-native-router-flux';
+
+import {
+  Home,
+  Login,
+  Register,
+  Detailbarang,
+  Detailkampanye,
+  Berbagibarang,
+  Welcome,
+  Thankyou,
+  Profile,
+  Profileverified,
+  Listbarang,
+  Listkampanye,
+  Request,
+  Aturanpenggunaan,
+  Statusbarang,
+} from './src';
 
 const Routes = () => (
   <Router>
@@ -49,11 +52,7 @@ const Routes = () => (
         component={Aturanpenggunaan}
         title="Aturanpenggunaan"
       />
-      <Scene
-        key="statusbarang"
-        component={Statusbarang}
-        title="Statusbarang"
-      />
+      <Scene key="statusbarang" component={Statusbarang} title="Statusbarang" />
     </Scene>
   </Router>
 );
