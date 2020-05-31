@@ -22,7 +22,7 @@ import {
 const Routes = () => (
   <Router>
     <Scene key="root">
-      <Scene key="home" component={Home} title="Home" initial={true} />
+      <Scene key="home" component={Home} title="Home" />
       <Scene key="login" component={Login} title="Login" />
       <Scene key="register" component={Register} title="Register" />
       <Scene key="detailbarang" component={Detailbarang} title="Detailbarang" />
@@ -36,7 +36,7 @@ const Routes = () => (
         component={Berbagibarang}
         title="Berbagibarang"
       />
-      <Scene key="welcome" component={Welcome} title="Welcome" />
+      <Scene key="welcome" component={Welcome} title="Welcome" initial={true} />
       <Scene key="thankyou" component={Thankyou} title="Thankyou" />
       <Scene key="profile" component={Profile} title="Profile" />
       <Scene
