@@ -17,6 +17,7 @@ import {
   Card,
   CardItem,
   Body,
+  H1,
 } from 'native-base';
 import IconSimple from 'react-native-vector-icons/SimpleLineIcons';
 import IconAwesome from 'react-native-vector-icons/FontAwesome';
@@ -56,8 +57,13 @@ export default class Pencarian extends Component {
     return (
       <Root>
         <Container>
-          <Header style={{ backgroundColor: '#F05E23', height: 100 }}>
-            <View
+          <Header style={{ backgroundColor: '#F05E23', height: 100, marginLeft: -20 }}>
+            <View>
+              <H1 style={{ color: '#ffffff', fontFamily: 'Montserrat-Bold', marginTop: 25 }}>Barang Sumbangan</H1>
+              <Text style={{ color: '#ffffff', fontFamily: 'Montserrat-Regular' }}>Temukan barang yang kamu butuhkan disini</Text>
+            </View>
+            {/* // eslint-disable-next-line prettier/prettier */}
+            {/* <View
               style={{ flex: 1, flexDirection: 'column', paddingVertical: 10 }}>
               <View style={{ flexDirection: 'row' }}>
                 <Button transparent>
@@ -125,7 +131,7 @@ export default class Pencarian extends Component {
                   </Text>
                 </Button>
               </View>
-            </View>
+            </View> */}
           </Header>
 
           <Content
@@ -177,7 +183,7 @@ export default class Pencarian extends Component {
             <BottomNav active='stuff' />
           </View>
         </Container>
-      </Root>
+      </Root >
     );
   }
 }
