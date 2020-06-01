@@ -11,6 +11,7 @@ import {
   Form,
   Label,
   Root,
+  Toast,
 } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import { BASE_URL } from 'react-native-dotenv';
@@ -54,7 +55,7 @@ export default class Register extends Component {
 
   handleSubmit = () => {
     const user = {
-      username: 'test12345678',
+      username: 'test12345678adssasdasaaaaaa',
       password: '123456781',
       passwordConf: '123456781',
       profile: {
@@ -66,13 +67,14 @@ export default class Register extends Component {
       },
     };
 
-    Axios.post(BASE_URL + '/api/register/', { user })
+    Axios.post(BASE_URL + '/api/register/', user)
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        console.log(res.data.message);
+        Toast.show({ text: res.data.message });
       })
       .catch(error => {
-        console.error(error);
+        console.log(error);
+        Toast.show({ text: error.message });
       });
   };
 
