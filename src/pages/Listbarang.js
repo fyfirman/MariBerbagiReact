@@ -174,7 +174,7 @@ export default class Pencarian extends Component {
           </Content>
 
           <View>
-            <BottomNav />
+            <BottomNav active='stuff' />
           </View>
         </Container>
       </Root>

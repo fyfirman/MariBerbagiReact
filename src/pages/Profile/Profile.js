@@ -149,7 +149,7 @@ export default class Profile extends Component {
           </Content>
 
           <View>
-            <BottomNav />
+            <BottomNav active='profile' />
           </View>
         </Container>
       </Root>

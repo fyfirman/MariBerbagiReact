@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 const goToListBarang = () => {
@@ -7,27 +7,34 @@ const goToListBarang = () => {
 };
 
 const goToListKampanye = () => {
-  Actions.listkampanye();
+  Alert.alert('Segera hadir', 'Fitur kampanye akan segera tiba! Tunggu nanti');
 };
 
 const goToBerbagiBarang = () => {
-  Actions.berbagibarang();
+  Actions.addStuff();
 };
 
-//const goToChat = () => {
-//    Actions.chat();
-//}
+const goToChat = () => {
+  Alert.alert('Segera hadir', 'Fitur obrolan akan segera tiba! Tunggu nanti');
+};
 
 const goToProfile = () => {
   Actions.profile();
 };
 
 export default class bottomNavbar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <View style={styles.navbar}>
         <View style={styles.isiNavbar}>
-          <TouchableOpacity style={styles.icon} onPress={goToListBarang}>
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={goToListBarang}
+            disabled={this.props.active === 'stuff'}>
             <Image
               style={{ color: '#F05E23' }}
               source={require('../../assets/icons_real/search_on.png')}
@@ -45,12 +52,15 @@ export default class bottomNavbar extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.isiNavbar}>
-          <TouchableOpacity style={styles.icon}>
+          <TouchableOpacity style={styles.icon} onPress={goToChat}>
             <Image source={require('../../assets/icons_real/chat.png')} />
           </TouchableOpacity>
         </View>
         <View style={styles.isiNavbar}>
-          <TouchableOpacity style={styles.icon} onPress={goToProfile}>
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={goToProfile}
+            disabled={this.props.active === 'profile'}>
             <Image source={require('../../assets/icons_real/user.png')} />
           </TouchableOpacity>
         </View>
