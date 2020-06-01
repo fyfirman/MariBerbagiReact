@@ -26,8 +26,7 @@ export default class Profile extends Component {
   }
 
   componentDidMount = async () => {
-    // await Axios.get(BASE_URL + '/api/user/' + GLOBAL.USER_ID)
-    await Axios.get(BASE_URL + '/api/user/5ed49dd59c24953f4c084309')
+    await Axios.get(BASE_URL + '/api/user/' + GLOBAL.USER_ID)
       .then(res => {
         this.setState({
           user: res.data.User[0],
@@ -38,7 +37,7 @@ export default class Profile extends Component {
         console.log(error.response.data);
       });
 
-    await Axios.get(BASE_URL + '/api/stuff?owner_id=5ed49dd59c24953f4c084309')
+    await Axios.get(BASE_URL + '/api/stuff?owner_id=' + GLOBAL.USER_ID)
       .then(res => {
         this.setState({
           stuffs: res.data.Stuff,
@@ -49,9 +48,7 @@ export default class Profile extends Component {
         console.log(error.response.data);
       });
 
-    await Axios.get(
-      BASE_URL + '/api/request?requestor_id=5ed49dd59c24953f4c084309',
-    )
+    await Axios.get(BASE_URL + '/api/request?requestor_id=' + GLOBAL.USER_ID)
       .then(res => {
         this.setState({
           requests: res.data.Request,
