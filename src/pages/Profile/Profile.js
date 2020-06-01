@@ -21,6 +21,7 @@ export default class Profile extends Component {
     this.state = {
       user: null,
       stuffs: [],
+      requests: [],
     };
   }
 
@@ -43,6 +44,19 @@ export default class Profile extends Component {
           stuffs: res.data.Stuff,
         });
         console.log('Fetch data stuff : ', res.data.Stuff);
+      })
+      .catch(error => {
+        console.log(error.response.data);
+      });
+
+    await Axios.get(
+      BASE_URL + '/api/request?requestor_id=5ed49dd59c24953f4c084309',
+    )
+      .then(res => {
+        this.setState({
+          requests: res.data.Request,
+        });
+        console.log('Fetch data request : ', res.data.Request);
       })
       .catch(error => {
         console.log(error.response.data);
@@ -110,7 +124,7 @@ export default class Profile extends Component {
               </View>
 
               <Grid style={styles.kartuBarang}>
-                {this.state.stuffs.map((stuff, index) => {
+                {this.state.requests.map((request, index) => {
                   return (
                     <TouchableOpacity
                       key={index}
@@ -118,16 +132,14 @@ export default class Profile extends Component {
                       onPress={this.goToStatusBarang}>
                       <Col size={50}>
                         <Image
-                          source={{
-                            uri: `${BASE_URL}/${stuff.picture}`,
-                          }}
+                          source={require('../../../assets/images/macOS5.jpg')}
                           style={styles.fotoBarang}
                         />
                         <View style={styles.boxKet}>
-                          <Text>{stuff.name}</Text>
+                          <Text>Baju bekas</Text>
                           <View style={styles.isiKet}>
                             <Text style={styles.ketBarang}>
-                              Status {stuff.condition == 'new' ? 'Baru' : 'Bekas'} -
+                              Status : {request.status}
                             </Text>
                           </View>
                         </View>
