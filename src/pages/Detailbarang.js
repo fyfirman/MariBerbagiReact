@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Root, Container, Content } from 'native-base';
+import { Root, Container, Content, H2 } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import DeskripsiBarang from '../components/deskripsiBarang';
 import PeminatBarang from '../components/peminatBarang';
@@ -17,7 +17,7 @@ import Axios from 'axios';
 import { BASE_URL } from 'react-native-dotenv';
 
 const goToListbarang = () => {
-  Actions.listbarang();
+  Actions.pop();
 };
 
 const goToRequest = () => {
@@ -54,11 +54,12 @@ export default class Detailbarang extends Component {
   }
 
   async componentDidMount() {
-    await Axios.get(BASE_URL + '/api/stuff/5ed514ea6d00fe077ce3141a')
+    await Axios.get(BASE_URL + '/api/stuff/5ed53d9712c1e41c287e5713')
       .then(data => {
         this.setState({
           stuff: data.data.Stuff[0],
         });
+        console.log(data.data.Stuff[0]);
       })
       .catch(error => {
         console.log(error);
@@ -88,15 +89,18 @@ export default class Detailbarang extends Component {
               />
             </View>
             <View style={styles.barWrapper}>
-              <TextInput
+              <H2 style={{ fontSize: 20 ,color: '#ffffff', fontFamily: 'Montserrat-Bold', paddingLeft: 20}}>
+                Detail Barang
+              </H2>
+              {/* <TextInput
                 placeholder="Cari Barang Sumbangan"
                 placeholderTextColor="black"
                 style={styles.searchBar}
-              />
-              <Image
+              /> */}
+              {/* <Image
                 source={require('../../assets/images/search.png')}
                 style={styles.searchLogo}
-              />
+              /> */}
             </View>
           </View>
 
@@ -140,8 +144,8 @@ export default class Detailbarang extends Component {
                   {this.state.stuff.postal_fee ? (
                     <Text>Ongkos Kirim ditanggung Penerima</Text>
                   ) : (
-                    <Text>Ongkos Kirim ditanggung Pengirim</Text>
-                  )}
+                      <Text>Ongkos Kirim ditanggung Pengirim</Text>
+                    )}
                 </Text>
               </View>
               <View style={styles.ket}>
@@ -165,7 +169,7 @@ export default class Detailbarang extends Component {
                 </TouchableOpacity>
               </View>
 
-              <View style={styles.garis}>
+              {/* <View style={styles.garis}>
                 <TouchableOpacity
                   style={styles.frag}
                   onPress={() => this.setState({ val: 'peminatBarang' })}>
@@ -173,9 +177,9 @@ export default class Detailbarang extends Component {
                     {this.state.jumPeminat} Peminat
                   </Text>
                 </TouchableOpacity>
-              </View>
+              </View> */}
 
-              <View style={styles.garis}>
+              {/* <View style={styles.garis}>
                 <TouchableOpacity
                   style={styles.frag}
                   onPress={() => this.setState({ val: 'diskusiBarang' })}>
@@ -184,7 +188,7 @@ export default class Detailbarang extends Component {
                   />
                   <Text style={styles.txtFrag}>Diskusi</Text>
                 </TouchableOpacity>
-              </View>
+              </View> */}
             </View>
 
             <View>{this.renderElement()}</View>
@@ -206,8 +210,8 @@ const styles = StyleSheet.create({
     position: 'relative',
     flexDirection: 'row',
     height: 75,
-    justifyContent: 'center',
     alignItems: 'center',
+    paddingLeft: 20,
   },
   arrow: {
     marginTop: 6,
@@ -216,7 +220,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   barWrapper: {
-    paddingLeft: 5,
+    paddingLeft: 0,
     marginVertical: 8,
   },
   searchBar: {
