@@ -18,6 +18,7 @@ import ValidationComponent from 'react-native-form-validator';
 import customStyle from './styles';
 import { BASE_URL } from 'react-native-dotenv';
 import Axios from 'axios';
+import GLOBAL from '../../global';
 
 const styles = customStyle;
 
@@ -52,16 +53,17 @@ export default class Login extends ValidationComponent {
     }
   };
 
-  authenticateUser = callback => {
+  authenticateUser = async callback => {
     const user = {
       username: this.state.username,
       password: this.state.password,
     };
 
-    Axios.post(BASE_URL + '/api/login/', user)
+    await Axios.post(BASE_URL + '/api/login/', user)
       .then(res => {
-        console.log(res.data.message);
         Toast.show({ text: res.data.message });
+        GLOBAL.USER_ID = res.data.user._id;
+        console.log(GLOBAL);
         setTimeout(() => callback(), 1000);
       })
       .catch(error => {
