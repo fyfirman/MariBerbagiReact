@@ -12,10 +12,13 @@ import {
   Form,
   Label,
   Root,
+  Toast,
 } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import ValidationComponent from 'react-native-form-validator';
 import customStyle from './styles';
+import { BASE_URL } from 'react-native-dotenv';
+import Axios from 'axios';
 
 const styles = customStyle;
 
@@ -27,7 +30,7 @@ export default class Login extends ValidationComponent {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      username: '',
       password: '',
     };
   }
@@ -40,14 +43,34 @@ export default class Login extends ValidationComponent {
     Actions.register();
   };
 
-  _onPressButton = () => {
+  handleSubmit = () => {
     this.validate({
-      email: { email: true, required: true },
+      username: { required: true },
       password: { minlength: 3, required: true },
     });
-    if (this.isFormValid('email') && this.isFormValid('password')) {
-      Actions.listbarang();
+    if (this.isFormValid('username') && this.isFormValid('password')) {
+      this.authenticateUser(() => Actions.listbarang());
     }
+  };
+
+  authenticateUser = callback => {
+    const user = {
+      username: this.state.username,
+      password: this.state.password,
+    };
+
+    Axios.post(BASE_URL + '/api/login/', user)
+      .then(res => {
+        console.log(res.data.message);
+        Toast.show({ text: res.data.message });
+        setTimeout(() => callback(), 2000);
+      })
+      .catch(error => {
+        console.log(error);
+        console.log(error.request.data);
+        console.log(error.response.data);
+        Toast.show({ text: error.message });
+      });
   };
 
   render() {
@@ -76,15 +99,15 @@ export default class Login extends ValidationComponent {
                   barang layak gunamu di Mari Berbagi.
                 </Text>
                 <Form style={styles.formContainer}>
-                  <Label style={styles.label}>Email</Label>
+                  <Label style={styles.label}>Username</Label>
                   <TextInput
-                    placeholder="Masukkan email"
-                    onChangeText={email => this.setState({ email })}
-                    value={this.state.email}
+                    placeholder="Masukkan Username"
+                    onChangeText={username => this.setState({ username })}
+                    value={this.state.username}
                     style={styles.textField}
                   />
-                  {this.isFieldInError('email') &&
-                    this.getErrorsInField('email').map(errorMessage => (
+                  {this.isFieldInError('username') &&
+                    this.getErrorsInField('username').map(errorMessage => (
                       <Text style={styles.errorLabel}>{errorMessage}</Text>
                     ))}
                   <Label style={styles.label}>Password</Label>
@@ -102,7 +125,7 @@ export default class Login extends ValidationComponent {
                 </Form>
                 <Button
                   block
-                  onPress={this._onPressButton}
+                  onPress={this.handleSubmit}
                   style={styles.buttonPrimary}>
                   <Text>Masuk</Text>
                 </Button>
