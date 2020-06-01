@@ -25,21 +25,23 @@ import BottomNav from '../components/bottomNavbar';
 import Axios from 'axios';
 import { BASE_URL } from 'react-native-dotenv';
 
-const goToDetailbarang = () => {
-  Actions.detailbarang();
-};
+
 
 export default class Pencarian extends Component {
   static navigationOptions = {
     header: null,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       stuff: [],
     };
   }
+
+  goToDetailbarang = stuff => {
+    Actions.detailbarang({ stuff_id: stuff._id });
+  };
 
   componentDidMount() {
     Axios.get(BASE_URL + '/api/stuff/')
@@ -143,7 +145,8 @@ export default class Pencarian extends Component {
             {this.state.stuff.map((list, index) => (
               <Grid>
                 <Col size={50} key={index}>
-                  <TouchableWithoutFeedback onPress={goToDetailbarang}>
+                  <TouchableWithoutFeedback
+                    onPress={() => this.goToDetailbarang(list)}>
                     <Card>
                       <CardItem cardBody>
                         <Image
