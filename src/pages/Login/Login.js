@@ -63,13 +63,12 @@ export default class Login extends ValidationComponent {
       .then(res => {
         console.log(res.data.message);
         Toast.show({ text: res.data.message });
-        setTimeout(() => callback(), 2000);
+        setTimeout(() => callback(), 1000);
       })
       .catch(error => {
-        console.log(error);
-        console.log(error.request.data);
+        console.log(user);
         console.log(error.response.data);
-        Toast.show({ text: error.message });
+        Toast.show({ text: error.response.data.message });
       });
   };
 
