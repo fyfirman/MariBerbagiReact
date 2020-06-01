@@ -13,8 +13,9 @@ import {
   Root,
 } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
-
+import { BASE_URL } from 'react-native-dotenv';
 import customStyle from './styles';
+import Axios from 'axios';
 
 const styles = customStyle;
 
@@ -49,6 +50,30 @@ export default class Register extends Component {
 
   _onPressButton = () => {
     Actions.listbarang();
+  };
+
+  handleSubmit = () => {
+    const user = {
+      username: 'test12345678',
+      password: '123456781',
+      passwordConf: '123456781',
+      profile: {
+        name: 'firmansyah',
+        address: 'Jl. Saluyu XV A no. 11',
+        profile_picture: '',
+        phone: '0878322343',
+        email: 'test@gmail.com',
+      },
+    };
+
+    Axios.post(BASE_URL + '/api/register/', { user })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
 
   // Kumpulan function input Validator sesuai field pada form registrasi
@@ -229,9 +254,9 @@ export default class Register extends Component {
 
               <Button
                 block
-                onPress={this._onPressButton}
+                onPress={this.handleSubmit}
                 style={styles.buttonPrimary}>
-                <Text>Masuk</Text>
+                <Text>Daftar</Text>
               </Button>
 
               <View style={{ marginTop: 10, marginBottom: 10 }}>
