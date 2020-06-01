@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import {
-  TextInput,
-  StyleSheet,
-  View,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import { TextInput, View, TouchableWithoutFeedback } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
   Button,
