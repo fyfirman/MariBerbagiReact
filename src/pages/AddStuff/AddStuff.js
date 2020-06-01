@@ -32,12 +32,9 @@ export default class AddStuff extends Component {
       namaBarangError: '',
       deskripsi: '',
       deskripsiError: '',
+      condition: 'new',
     };
   }
-
-  state = {
-    checked: 'first',
-  };
 
   handleBack = () => {
     Actions.pop();
@@ -84,8 +81,6 @@ export default class AddStuff extends Component {
   };
 
   render() {
-    const { checked } = this.state;
-
     return (
       <Root>
         <Container>
@@ -149,9 +144,13 @@ export default class AddStuff extends Component {
                       <RadioButton
                         value="baru"
                         color="#F05E23"
-                        status={checked === 'first' ? 'checked' : 'unchecked'}
+                        status={
+                          this.state.condition === 'new'
+                            ? 'checked'
+                            : 'unchecked'
+                        }
                         onPress={() => {
-                          this.setState({ checked: 'first' });
+                          this.setState({ condition: 'new' });
                         }}
                       />
                       <Text>Baru</Text>
@@ -160,9 +159,13 @@ export default class AddStuff extends Component {
                       <RadioButton
                         value="bekas"
                         color="#F05E23"
-                        status={checked === 'second' ? 'checked' : 'unchecked'}
+                        status={
+                          this.state.condition === 'old'
+                            ? 'checked'
+                            : 'unchecked'
+                        }
                         onPress={() => {
-                          this.setState({ checked: 'second' });
+                          this.setState({ condition: 'old' });
                         }}
                       />
                       <Text>Bekas</Text>
