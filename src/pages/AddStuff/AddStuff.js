@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Alert, StyleSheet, View, Text, Image } from 'react-native';
+import { TextInput, Alert, View, Text, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
   Button,
@@ -16,14 +16,11 @@ import {
 } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import { RadioButton } from 'react-native-paper';
+import customStyle from './styles';
 
-const goToHome = () => {
-  Actions.home();
-};
+const styles = customStyle;
 
-var radio_props = [{ label: 'Baru', value: 0 }, { label: 'Bekas', value: 1 }];
-
-export default class Berbagibarang extends Component {
+export default class AddStuff extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -40,6 +37,10 @@ export default class Berbagibarang extends Component {
 
   state = {
     checked: 'first',
+  };
+
+  handleBack = () => {
+    Actions.pop();
   };
 
   namaBarangValidator() {
@@ -85,25 +86,13 @@ export default class Berbagibarang extends Component {
   render() {
     const { checked } = this.state;
 
-    let kategoriBarang = [
-      {
-        value: 'Baju',
-      },
-      {
-        value: 'Elektornik',
-      },
-      {
-        value: 'Alat Rumah Tangga',
-      },
-    ];
-
     return (
       <Root>
         <Container>
           <Content>
             <View style={styles.header}>
               <IconIonicons
-                onPress={goToHome}
+                onPress={this.handleBack}
                 name="ios-arrow-round-back"
                 style={styles.arrow}
               />
@@ -123,12 +112,12 @@ export default class Berbagibarang extends Component {
                     <Image
                       style={styles.image2}
                       //resizeMode="contain"
-                      source={require('../../assets/images/macOS5.jpg')}
+                      source={require('../../../assets/images/macOS5.jpg')}
                     />
                     <Image
                       style={styles.image3}
                       //resizeMode="contain"
-                      source={require('../../assets/images/macOS5.jpg')}
+                      source={require('../../../assets/images/macOS5.jpg')}
                     />
                   </View>
 
@@ -156,8 +145,7 @@ export default class Berbagibarang extends Component {
 
                   <Label style={styles.namaKolom}>Kondisi Barang</Label>
                   <View>
-                    <View
-                      style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={styles.radioContainer}>
                       <RadioButton
                         value="baru"
                         color="#F05E23"
@@ -168,8 +156,7 @@ export default class Berbagibarang extends Component {
                       />
                       <Text>Baru</Text>
                     </View>
-                    <View
-                      style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={styles.radioContainer}>
                       <RadioButton
                         value="bekas"
                         color="#F05E23"
@@ -205,13 +192,6 @@ export default class Berbagibarang extends Component {
                       <CheckBox color="#F05E23" />
                       <Text style={styles.textPilOngkir}>Bersedia COD</Text>
                     </ListItem>
-                    {/*
-                                    <CheckBox
-                                        value={true}
-                                        disabled={false}
-                                    />
-                                    <Text>{" "} Tanggung Biaya Pengiriman</Text>
-                                    */}
                   </View>
 
                   <View style={styles.pilOngkir}>
@@ -224,13 +204,6 @@ export default class Berbagibarang extends Component {
                         Tanggung Biaya Pengiriman
                       </Text>
                     </ListItem>
-                    {/*
-                                    <CheckBox
-                                        value={true}
-                                        disabled={false}
-                                    />
-                                    <Text>{" "} Tanggung Biaya Pengiriman</Text>
-                                    */}
                   </View>
                 </Form>
 
@@ -248,108 +221,3 @@ export default class Berbagibarang extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: '#F05E23',
-    paddingTop: 20,
-    paddingBottom: 40,
-    paddingHorizontal: 30,
-    borderBottomLeftRadius: 25,
-    marginBottom: -40,
-  },
-  arrow: {
-    fontSize: 40,
-    color: 'white',
-  },
-  judulPage: {
-    color: '#ffffff',
-    fontFamily: 'Montserrat-Bold',
-    fontSize: 25,
-  },
-  subtitlePage: {
-    color: '#ffffff',
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 13,
-  },
-  container: {
-    paddingTop: 5,
-    paddingHorizontal: 25,
-  },
-  card: {
-    paddingHorizontal: 20,
-    borderRadius: 20,
-    paddingVertical: 10,
-    marginBottom: 20,
-  },
-  form: {
-    paddingVertical: 20,
-  },
-  namaKolom: {
-    fontSize: 13,
-    fontFamily: 'Montserrat-Regular',
-    paddingVertical: 10,
-  },
-  view2: {
-    flexDirection: 'row',
-  },
-  image2: {
-    width: 50,
-    height: 50,
-    marginVertical: 7,
-    marginRight: 5,
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
-  },
-  image3: {
-    width: 50,
-    height: 50,
-    marginVertical: 7,
-    marginHorizontal: 5,
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
-  },
-  kolomInput: {
-    backgroundColor: '#F5F5F5',
-    borderColor: '#E4E4E4',
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    height: 40,
-  },
-  notifError: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 13,
-    color: 'red',
-  },
-  button: {
-    backgroundColor: '#FFE8C5',
-    marginVertical: 5,
-    borderRadius: 5,
-  },
-  dropdown: {
-    borderColor: 'orange',
-  },
-  pilOngkir: {
-    paddingTop: 5,
-    left: 0,
-  },
-  textPilOngkir: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 13,
-    paddingLeft: 5,
-  },
-  buttonPrimary: {
-    backgroundColor: '#F05E23',
-    marginVertical: 5,
-    borderRadius: 5,
-  },
-  tulisanButton: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 12,
-    color: 'white',
-  },
-});

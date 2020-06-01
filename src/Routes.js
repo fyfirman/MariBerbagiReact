@@ -7,7 +7,7 @@ import {
   Register,
   Detailbarang,
   Detailkampanye,
-  Berbagibarang,
+  AddStuff,
   Welcome,
   Thankyou,
   Profile,
@@ -31,11 +31,7 @@ const Routes = () => (
         component={Detailkampanye}
         title="Detailkampanye"
       />
-      <Scene
-        key="berbagibarang"
-        component={Berbagibarang}
-        title="Berbagibarang"
-      />
+      <Scene key="addStuff" component={AddStuff} title="Berbagi Barang" />
       <Scene key="welcome" component={Welcome} title="Welcome" initial={true} />
       <Scene key="thankyou" component={Thankyou} title="Thankyou" />
       <Scene key="profile" component={Profile} title="Profile" />
