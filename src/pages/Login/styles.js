@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  backIcon: { fontSize: 40, color: 'white' },
   header: {
     backgroundColor: '#F05E23',
     paddingTop: 50,
@@ -30,6 +31,7 @@ export default StyleSheet.create({
     marginVertical: 5,
     borderRadius: 5,
   },
+  formContainer: { paddingVertical: 20 },
   container: {
     paddingTop: 5,
     paddingHorizontal: 10,

@@ -59,7 +59,7 @@ export default class Login extends ValidationComponent {
               <IconIonicons
                 onPress={this.goToListbarang}
                 name="ios-arrow-round-back"
-                style={{ fontSize: 40, color: 'white' }}
+                style={styles.backIcon}
               />
               <H1 light style={styles.headerTitle}>
                 MARI BERBAGI
@@ -75,8 +75,7 @@ export default class Login extends ValidationComponent {
                   Mari bergabung menjadi agen penebar manfaat dengan sumbangan
                   barang layak gunamu di Mari Berbagi.
                 </Text>
-
-                <Form style={{ paddingVertical: 20 }}>
+                <Form style={styles.formContainer}>
                   <Label style={styles.label}>Email</Label>
                   <TextInput
                     placeholder="Masukkan email"
