@@ -36,8 +36,11 @@ export default class bottomNavbar extends Component {
             onPress={goToListBarang}
             disabled={this.props.active === 'stuff'}>
             <Image
-              style={{ color: '#F05E23' }}
-              source={require('../../assets/icons_real/search_on.png')}
+              source={
+                this.props.active === 'stuff'
+                  ? require('../../assets/icons_real/search_on.png')
+                  : require('../../assets/icons_real/search.png')
+              }
             />
           </TouchableOpacity>
         </View>
@@ -48,7 +51,9 @@ export default class bottomNavbar extends Component {
         </View>
         <View>
           <TouchableOpacity style={styles.iconPost} onPress={goToBerbagiBarang}>
-            <Image source={require('../../assets/icons_B/post_B.png')} />
+            <Image
+              source={require('../../assets/icons_B/post_A.png')}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.isiNavbar}>
@@ -61,7 +66,13 @@ export default class bottomNavbar extends Component {
             style={styles.icon}
             onPress={goToProfile}
             disabled={this.props.active === 'profile'}>
-            <Image source={require('../../assets/icons_real/user.png')} />
+            <Image
+              source={
+                this.props.active === 'profile'
+                  ? require('../../assets/icons_real/user_active.png')
+                  : require('../../assets/icons_real/user.png')
+              }
+            />
           </TouchableOpacity>
         </View>
       </View>
@@ -82,7 +93,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   iconPost: {
-    marginTop: -10,
+    marginTop: -18,
   },
 });
 
