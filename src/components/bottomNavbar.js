@@ -51,9 +51,7 @@ export default class bottomNavbar extends Component {
         </View>
         <View>
           <TouchableOpacity style={styles.iconPost} onPress={goToBerbagiBarang}>
-            <Image
-              source={require('../../assets/icons_B/post_A.png')}
-            />
+            <Image source={require('../../assets/icons_B/post_A.png')} />
           </TouchableOpacity>
         </View>
         <View style={styles.isiNavbar}>
