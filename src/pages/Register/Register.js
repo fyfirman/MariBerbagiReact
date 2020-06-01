@@ -38,6 +38,10 @@ export default class Register extends Component {
       usernameError: '',
       passwordError: '',
       cpasswordError: '',
+      phone: '',
+      phoneError: '',
+      address: '',
+      addressError: '',
     };
   }
 
@@ -55,15 +59,15 @@ export default class Register extends Component {
 
   handleSubmit = () => {
     const user = {
-      username: 'test12345678adssasdasaaaaaa',
-      password: '123456781',
-      passwordConf: '123456781',
+      username: this.state.username,
+      password: this.state.password,
+      passwordConf: this.state.cpassword,
       profile: {
-        name: 'firmansyah',
-        address: 'Jl. Saluyu XV A no. 11',
+        name: this.state.name,
+        address: this.state.address,
         profile_picture: '',
-        phone: '0878322343',
-        email: 'test@gmail.com',
+        phone: this.state.phone,
+        email: this.state.email,
       },
     };
 
@@ -74,6 +78,8 @@ export default class Register extends Component {
       })
       .catch(error => {
         console.log(error);
+        console.log(error.request.data);
+        console.log(error.response.data);
         Toast.show({ text: error.message });
       });
   };
@@ -199,7 +205,28 @@ export default class Register extends Component {
                   }}
                   onBlur={() => this.emailValidator()}
                 />
+
                 <Text style={styles.notifError}>{this.state.emailError}</Text>
+
+                <Label style={styles.label}>Nomor Telepon</Label>
+                <TextInput
+                  placeholder="Masukkan Nomor Telepon"
+                  style={styles.textinput}
+                  onChangeText={value => {
+                    this.setState({ phone: value });
+                  }}
+                />
+                <Text style={styles.notifError}>{this.state.phoneError}</Text>
+
+                <Label style={styles.label}>Alamat</Label>
+                <TextInput
+                  placeholder="Masukkan Alamat"
+                  style={styles.textinput}
+                  onChangeText={value => {
+                    this.setState({ address: value });
+                  }}
+                />
+                <Text style={styles.notifError}>{this.state.addressError}</Text>
 
                 <Label style={styles.label}>Username</Label>
                 <TextInput
