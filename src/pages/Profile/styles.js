@@ -62,7 +62,7 @@ export default StyleSheet.create({
     color: '#F05E23',
   },
   kartuBarang: {
-    flexDirection: 'row',
+    flexWrap: 'wrap',
     paddingBottom: 5,
     overflow: 'hidden',
   },
