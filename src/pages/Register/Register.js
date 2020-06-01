@@ -49,8 +49,8 @@ export default class Register extends Component {
     Actions.aturanpenggunaan();
   };
 
-  goToLogin = () => {
-    Actions.login();
+  back = () => {
+    Actions.pop();
   };
 
   _onPressButton = () => {
@@ -173,7 +173,7 @@ export default class Register extends Component {
           <Content style={styles.container}>
             <View style={styles.header}>
               <IconIonicons
-                onPress={this.goToLogin}
+                onPress={this.back}
                 name="ios-arrow-round-back"
                 style={{ fontSize: 40, color: 'white' }}
               />
@@ -292,7 +292,7 @@ export default class Register extends Component {
               <View style={{ marginTop: 10, marginBottom: 10 }}>
                 <Text style={styles.punyaAkun}>
                   Sudah punya akun ?{' '}
-                  <TouchableWithoutFeedback onPress={this.goToLogin}>
+                  <TouchableWithoutFeedback onPress={this.back}>
                     <Text numberOfLines={1} style={styles.punyaAkunLogin}>
                       Log in
                     </Text>
