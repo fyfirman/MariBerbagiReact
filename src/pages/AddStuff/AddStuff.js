@@ -80,12 +80,6 @@ export default class AddStuff extends Component {
         console.log('User tapped custom button: ', response.customButton);
         alert(response.customButton);
       } else {
-        // const source = { uri: response.uri };
-
-        // You can also display the image using data:
-        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
-        // alert(JSON.stringify(response));s
-        // console.log('response', JSON.stringify(response));
         this.setState({
           picture: {
             filePath: response,
