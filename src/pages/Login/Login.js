@@ -14,7 +14,6 @@ import {
   Root,
   Toast,
 } from 'native-base';
-import IconIonicons from 'react-native-vector-icons/Ionicons';
 import ValidationComponent from 'react-native-form-validator';
 import customStyle from './styles';
 import { BASE_URL } from 'react-native-dotenv';
@@ -78,11 +77,6 @@ export default class Login extends ValidationComponent {
         <Container>
           <Content>
             <View style={styles.header}>
-              <IconIonicons
-                onPress={this.goToListbarang}
-                name="ios-arrow-round-back"
-                style={styles.backIcon}
-              />
               <H1 light style={styles.headerTitle}>
                 MARI BERBAGI
               </H1>
