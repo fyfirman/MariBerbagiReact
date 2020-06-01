@@ -33,6 +33,8 @@ export default class AddStuff extends Component {
       deskripsi: '',
       deskripsiError: '',
       condition: 'new',
+      is_cod: false,
+      postal_fee: false,
     };
   }
 
@@ -192,7 +194,13 @@ export default class AddStuff extends Component {
                       Apakah kamu bersedia COD?
                     </Label>
                     <ListItem>
-                      <CheckBox color="#F05E23" />
+                      <CheckBox
+                        color="#F05E23"
+                        checked={this.state.is_cod}
+                        onPress={() =>
+                          this.setState({ is_cod: !this.state.is_cod })
+                        }
+                      />
                       <Text style={styles.textPilOngkir}>Bersedia COD</Text>
                     </ListItem>
                   </View>
@@ -202,7 +210,13 @@ export default class AddStuff extends Component {
                       Apakah kamu menanggung biaya ongkir?
                     </Label>
                     <ListItem>
-                      <CheckBox color="#F05E23" />
+                      <CheckBox
+                        color="#F05E23"
+                        checked={this.state.postal_fee}
+                        onPress={() =>
+                          this.setState({ postal_fee: !this.state.postal_fee })
+                        }
+                      />
                       <Text style={styles.textPilOngkir}>
                         Tanggung Biaya Pengiriman
                       </Text>
