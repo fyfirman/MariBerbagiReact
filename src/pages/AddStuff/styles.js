@@ -45,8 +45,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   image2: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
     marginVertical: 7,
     marginRight: 5,
     borderTopLeftRadius: 5,

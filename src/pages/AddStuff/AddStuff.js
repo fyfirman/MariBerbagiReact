@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { TextInput, Alert, View, Text, Image } from 'react-native';
+import {
+  TextInput,
+  Alert,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import ImagePicker from 'react-native-image-picker';
 import { Actions } from 'react-native-router-flux';
 import {
   Button,
@@ -35,12 +43,77 @@ export default class AddStuff extends Component {
       condition: 'new',
       is_cod: false,
       postal_fee: false,
+      picture: {
+        filepath: {
+          data: '',
+          uri: '',
+        },
+        fileData: '',
+        fileUri: '',
+      },
     };
   }
 
   handleBack = () => {
     Actions.pop();
   };
+
+  chooseImage = () => {
+    let options = {
+      title: 'Select Image',
+      customButtons: [
+        { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
+      ],
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.showImagePicker(options, response => {
+      console.log('Response received');
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+        alert(response.customButton);
+      } else {
+        // const source = { uri: response.uri };
+
+        // You can also display the image using data:
+        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+        // alert(JSON.stringify(response));s
+        // console.log('response', JSON.stringify(response));
+        this.setState({
+          picture: {
+            filePath: response,
+            fileData: response.data,
+            fileUri: response.uri,
+          },
+        });
+      }
+    });
+  };
+
+  renderFileUri() {
+    if (this.state.picture.fileUri) {
+      return (
+        <Image
+          source={{ uri: this.state.picture.fileUri }}
+          style={styles.image2}
+        />
+      );
+    } else {
+      return (
+        <Image
+          source={require('../../../assets/images/macOS5.jpg')}
+          style={styles.image2}
+        />
+      );
+    }
+  }
 
   namaBarangValidator() {
     const re_namaBarang = /^[A-Za-z0-9()\s]+$/;
@@ -105,19 +178,12 @@ export default class AddStuff extends Component {
               <Card style={styles.card}>
                 <Form style={styles.form}>
                   <Label style={styles.namaKolom}>Foto Barang</Label>
-                  <View style={styles.view2}>
-                    <Image
-                      style={styles.image2}
-                      //resizeMode="contain"
-                      source={require('../../../assets/images/macOS5.jpg')}
-                    />
-                    <Image
-                      style={styles.image3}
-                      //resizeMode="contain"
-                      source={require('../../../assets/images/macOS5.jpg')}
-                    />
-                  </View>
-
+                  <View style={styles.view2}>{this.renderFileUri()}</View>
+                  <TouchableOpacity
+                    onPress={this.chooseImage}
+                    style={styles.btnSection}>
+                    <Text style={styles.btnText}>Choose File</Text>
+                  </TouchableOpacity>
                   <Label style={styles.namaKolom}>Nama Barang</Label>
                   <TextInput
                     onChangeText={NamaBarang => this.setState({ NamaBarang })}
