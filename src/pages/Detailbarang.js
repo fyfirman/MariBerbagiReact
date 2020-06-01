@@ -13,6 +13,8 @@ import IconIonicons from 'react-native-vector-icons/Ionicons';
 import DeskripsiBarang from '../components/deskripsiBarang';
 import PeminatBarang from '../components/peminatBarang';
 import DiskusiBarang from '../components/diskusiBarang';
+import Axios from 'axios';
+import { BASE_URL } from 'react-native-dotenv';
 
 const goToListbarang = () => {
   Actions.listbarang();
@@ -30,8 +32,10 @@ export default class Detailbarang extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      stuff: [],
+      owner: [],
       val: 1,
-      jumPeminat: 3,
+      jumPeminat: 0,
     };
   }
 
@@ -41,14 +45,40 @@ export default class Detailbarang extends Component {
     } else if (this.state.val == 'peminatBarang') {
       return <PeminatBarang />;
     } else {
-      return <DeskripsiBarang />;
+      return (
+        <View style={styles.container}>
+          <Text style={styles.paragraph}>{this.state.stuff.description}</Text>
+        </View>
+      );
     }
+  }
+
+  async componentDidMount() {
+    await Axios.get(BASE_URL + '/api/stuff/5ed514ea6d00fe077ce3141a')
+      .then(data => {
+        this.setState({
+          stuff: data.data.Stuff[0],
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    await Axios.get(BASE_URL + '/api/user/' + this.state.stuff.owner_id)
+      .then(data => {
+        this.setState({
+          owner: data.data.User[0].profile[0],
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
     return (
       <Root>
         <Container>
+          {console.log(this.state.owner.name)}
           <View style={styles.header}>
             <View>
               <IconIonicons
@@ -76,10 +106,12 @@ export default class Detailbarang extends Component {
                 rounded
                 style={styles.image1}
                 //resizeMode="contain"
-                source={require('../../assets/images/macOS5.jpg')}
+                source={{
+                  uri: `${BASE_URL}/${this.state.stuff.picture}`,
+                }}
               />
             </View>
-            <View style={styles.view2}>
+            {/*<View style={styles.view2}>
               <Image
                 style={styles.image2}
                 //resizeMode="contain"
@@ -90,25 +122,37 @@ export default class Detailbarang extends Component {
                 //resizeMode="contain"
                 source={require('../../assets/images/macOS5.jpg')}
               />
-            </View>
+            </View>*/}
 
             <View>
-              <Text style={styles.namaBarang}>Pakaian Bekas Warna Biru</Text>
+              <Text style={styles.namaBarang}>{this.state.stuff.name}</Text>
               {/*Pengirim*/}
-              <Text style={styles.namaPengirim}>Dari Kevin Akbar Adhiguna</Text>
+              <Text style={styles.namaPengirim}>
+                Dari {this.state.owner.name}
+              </Text>
               <View style={styles.ket}>
                 {/*Kondisi Barang*/}
-                <Text style={styles.ketBarang}>Kondisi 70% {'  '}</Text>
-                {/*Kategori Barang*/}
-                <Text style={styles.ketBarang}>Kategori Pakaian</Text>
+                <Text style={styles.ketBarang}>
+                  Kondisi {this.state.stuff.condition} {'  '}
+                </Text>
+                {/*Penanggung Ongkir*/}
+                <Text style={styles.ketBarang}>
+                  {this.state.stuff.postal_fee ? (
+                    <Text>Ongkos Kirim ditanggung Penerima</Text>
+                  ) : (
+                    <Text>Ongkos Kirim ditanggung Pengirim</Text>
+                  )}
+                </Text>
               </View>
               <View style={styles.ket}>
                 {/*Lokasi Barang*/}
-                <Text style={styles.ketBarang}>Sumatera Utara {'  '}</Text>
-                {/*Penanggung Ongkir*/}
                 <Text style={styles.ketBarang}>
-                  Ongkos Kirim ditanggung Penerima
+                  {this.state.stuff.address} {'  '}
                 </Text>
+                {/*Kategori Barang*/}
+                {/*<Text style={styles.ketBarang}>Kategori Pakaian</Text>*/}
+                {/*COD*/}
+                {this.state.stuff.is_cod ? <Text>Bisa COD</Text> : <Text />}
               </View>
             </View>
 
@@ -117,9 +161,6 @@ export default class Detailbarang extends Component {
                 <TouchableOpacity
                   style={styles.frag}
                   onPress={() => this.setState({ val: 'deskripsiBarang' })}>
-                  <Image
-                    source={require('../../assets/icons_real/icon_deskripsi.png')}
-                  />
                   <Text style={styles.txtFrag}>Deskripsi</Text>
                 </TouchableOpacity>
               </View>
@@ -214,6 +255,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 5,
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
+    marginBottom: 10,
   },
   image2: {
     width: 50,
@@ -284,5 +326,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Regular',
     fontSize: 15,
     color: 'white',
+  },
+  container: {
+    paddingTop: 15,
+    paddingBottom: 50,
+    marginRight: 5,
+  },
+  paragraph: {
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 13,
   },
 });

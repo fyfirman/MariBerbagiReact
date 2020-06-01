@@ -10,9 +10,7 @@ export default class peminatBarang extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.paragraph}>M. Fadillah Arsa</Text>
-        <Text style={styles.paragraph}>Firmansyah Yanuar</Text>
-        <Text style={styles.paragraph}>Aditya Al-Hakim</Text>
+        <Text style={styles.paragraph}>Coming Soon</Text>
       </View>
     );
   }

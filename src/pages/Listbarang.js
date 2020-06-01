@@ -21,6 +21,8 @@ import {
 import IconSimple from 'react-native-vector-icons/SimpleLineIcons';
 import IconAwesome from 'react-native-vector-icons/FontAwesome';
 import BottomNav from '../components/bottomNavbar';
+import Axios from 'axios';
+import { BASE_URL } from 'react-native-dotenv';
 
 const goToDetailbarang = () => {
   Actions.detailbarang();
@@ -30,6 +32,25 @@ export default class Pencarian extends Component {
   static navigationOptions = {
     header: null,
   };
+
+  constructor() {
+    super();
+    this.state = {
+      stuff: [],
+    };
+  }
+
+  componentDidMount() {
+    Axios.get(BASE_URL + '/api/stuff/')
+      .then(data => {
+        this.setState({
+          stuff: data.data.Stuff,
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   render() {
     return (
@@ -107,75 +128,49 @@ export default class Pencarian extends Component {
             </View>
           </Header>
 
-          <Content style={{ paddingHorizontal: 15, paddingTop: 10 }}>
-            <Grid>
-              <Col size={50}>
-                <Card>
-                  <CardItem cardBody>
-                    <Image
-                      source={{
-                        uri:
-                          'https://cdn.popmama.com/content-images/post/20200304/clothes-dryer-machine-1-898cce5e08eeda95c11152b2ec24bed7_600xauto.jpg',
-                      }}
-                      style={{ height: 150, width: null, flex: 1 }}
-                    />
-                  </CardItem>
-                  <CardItem>
-                    <TouchableWithoutFeedback onPress={goToDetailbarang}>
-                      <Body>
-                        <Text
-                          style={{
-                            fontSize: 12,
-                            fontFamily: 'Montserrat-Bold',
-                          }}>
-                          Pakaian Bekas Warna Biru
-                        </Text>
-                        <Text
-                          style={{
-                            fontSize: 10,
-                            fontFamily: 'Montserrat-Regular',
-                          }}>
-                          Kondisi 70% - 3 Peminat
-                        </Text>
-                      </Body>
-                    </TouchableWithoutFeedback>
-                  </CardItem>
-                </Card>
-              </Col>
-              <Col size={50}>
-                <Card>
-                  <CardItem cardBody>
-                    <Image
-                      source={{
-                        uri:
-                          'https://cdn.popmama.com/content-images/post/20200304/clothes-dryer-machine-1-898cce5e08eeda95c11152b2ec24bed7_600xauto.jpg',
-                      }}
-                      style={{ height: 150, width: null, flex: 1 }}
-                    />
-                  </CardItem>
-                  <CardItem>
-                    <TouchableWithoutFeedback onPress={goToDetailbarang}>
-                      <Body>
-                        <Text
-                          style={{
-                            fontSize: 12,
-                            fontFamily: 'Montserrat-Bold',
-                          }}>
-                          Pakaian Bekas Warna Biru
-                        </Text>
-                        <Text
-                          style={{
-                            fontSize: 10,
-                            fontFamily: 'Montserrat-Regular',
-                          }}>
-                          Kondisi 70% - 3 Peminat
-                        </Text>
-                      </Body>
-                    </TouchableWithoutFeedback>
-                  </CardItem>
-                </Card>
-              </Col>
-            </Grid>
+          <Content
+            style={{
+              paddingHorizontal: 15,
+              paddingTop: 10,
+              paddingBottom: 300,
+            }}>
+            {this.state.stuff.map((list, index) => (
+              <Grid>
+                <Col size={50} key={index}>
+                  <TouchableWithoutFeedback onPress={goToDetailbarang}>
+                    <Card>
+                      <CardItem cardBody>
+                        <Image
+                          source={{
+                            uri: `${BASE_URL}/${list.picture}`,
+                          }}
+                          style={{ height: 150, width: null, flex: 1 }}
+                        />
+                      </CardItem>
+                      <CardItem>
+                        <Body>
+                          <Text
+                            style={{
+                              fontSize: 12,
+                              fontFamily: 'Montserrat-Bold',
+                            }}>
+                            {list.name}
+                          </Text>
+                          <Text
+                            style={{
+                              fontSize: 10,
+                              fontFamily: 'Montserrat-Regular',
+                            }}>
+                            Kondisi {list.condition} - Jumlah {list.amount}
+                          </Text>
+                        </Body>
+                      </CardItem>
+                    </Card>
+                  </TouchableWithoutFeedback>
+                </Col>
+              </Grid>
+            ))}
+            <View style={{ paddingVertical: 15 }} />
           </Content>
 
           <View>
@@ -186,5 +181,3 @@ export default class Pencarian extends Component {
     );
   }
 }
-
-
