@@ -5,7 +5,7 @@ import { Container, Content, Text, H1, Root } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 
 const goToRegister = () => {
-  Actions.register();
+  Actions.pop();
 };
 
 export default class Aturanpenggunaan extends Component {
