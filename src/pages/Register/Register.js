@@ -75,6 +75,7 @@ export default class Register extends Component {
       .then(res => {
         console.log(res.data.message);
         Toast.show({ text: res.data.message });
+        setTimeout(() => Actions.login(), 2000);
       })
       .catch(error => {
         console.log(error);
