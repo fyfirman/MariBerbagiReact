@@ -1,11 +1,6 @@
 'use strict';
 import React from 'react';
-import {
-  TextInput,
-  TouchableWithoutFeedback,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { TextInput, TouchableWithoutFeedback, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
   Button,
@@ -20,16 +15,15 @@ import {
 } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import ValidationComponent from 'react-native-form-validator';
+import customStyle from './styles';
 
-const goToListbarang = () => {
-  Actions.listbarang();
-};
-
-const goToRegister = () => {
-  Actions.register();
-};
+const styles = customStyle;
 
 export default class Login extends ValidationComponent {
+  static navigationOptions = {
+    header: null,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -37,6 +31,14 @@ export default class Login extends ValidationComponent {
       password: '',
     };
   }
+
+  goToListbarang = () => {
+    Actions.listbarang();
+  };
+
+  goToRegister = () => {
+    Actions.register();
+  };
 
   _onPressButton = () => {
     this.validate({
@@ -48,108 +50,55 @@ export default class Login extends ValidationComponent {
     }
   };
 
-  static navigationOptions = {
-    header: null,
-  };
-
   render() {
     return (
       <Root>
         <Container>
           <Content>
-            <View
-              style={{
-                backgroundColor: '#F05E23',
-                paddingTop: 50,
-                paddingBottom: 70,
-                paddingHorizontal: 30,
-                marginBottom: -40,
-              }}>
+            <View style={styles.header}>
               <IconIonicons
-                onPress={goToListbarang}
+                onPress={this.goToListbarang}
                 name="ios-arrow-round-back"
                 style={{ fontSize: 40, color: 'white' }}
               />
-              <H1
-                light
-                style={{ color: '#ffffff', fontFamily: 'Montserrat-Bold' }}>
+              <H1 light style={styles.headerTitle}>
                 MARI BERBAGI
               </H1>
-              <Text
-                style={{ color: '#ffffff', fontFamily: 'Montserrat-Regular' }}>
+              <Text style={styles.headerSubtle}>
                 Berbagi senyuman dengan menyumbang barang.{' '}
               </Text>
             </View>
 
             <Content style={styles.container}>
-              <Card
-                style={{
-                  paddingHorizontal: 20,
-                  borderRadius: 20,
-                  padding: 20,
-                  marginBottom: 20,
-                }}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    fontFamily: 'Montserrat-Regular',
-                  }}>
+              <Card style={styles.introductionContainer}>
+                <Text style={styles.introductionLabel}>
                   Mari bergabung menjadi agen penebar manfaat dengan sumbangan
                   barang layak gunamu di Mari Berbagi.
                 </Text>
 
                 <Form style={{ paddingVertical: 20 }}>
-                  <Label
-                    style={{ fontSize: 13, fontFamily: 'Montserrat-Regular' }}>
-                    Email
-                  </Label>
+                  <Label style={styles.label}>Email</Label>
                   <TextInput
                     placeholder="Masukkan email"
                     onChangeText={email => this.setState({ email })}
                     value={this.state.email}
-                    style={{
-                      backgroundColor: '#F5F5F5',
-                      borderColor: '#E4E4E4',
-                      borderRadius: 5,
-                      paddingHorizontal: 10,
-                      marginBottom: 5,
-                    }}
+                    style={styles.textField}
                   />
                   {this.isFieldInError('email') &&
                     this.getErrorsInField('email').map(errorMessage => (
-                      <Text
-                        style={{
-                          fontSize: 12,
-                          fontFamily: 'Montserrat-Regular',
-                        }}>
-                        {errorMessage}
-                      </Text>
+                      <Text style={styles.errorLabel}>{errorMessage}</Text>
                     ))}
-                  <Label
-                    style={{ fontSize: 13, fontFamily: 'Montserrat-Regular' }}>
-                    Password
-                  </Label>
+                  <Label style={styles.label}>Password</Label>
                   <TextInput
                     placeholder="Masukkan Password"
                     onChangeText={password => this.setState({ password })}
                     value={this.state.password}
                     secureTextEntry={true}
-                    style={{
-                      backgroundColor: '#F5F5F5',
-                      borderColor: '#E4E4E4',
-                      borderRadius: 5,
-                      paddingHorizontal: 10,
-                    }}
+                    style={styles.textField}
                   />
                   {this.isFieldInError('password') &&
                     this.getErrorsInField('password').map(errorMessage => (
-                      <Text
-                        style={{
-                          fontSize: 12,
-                          fontFamily: 'Montserrat-Regular',
-                        }}>
-                        {errorMessage}
-                      </Text>
+                      <Text style={styles.errorLabel}>{errorMessage}</Text>
                     ))}
                 </Form>
                 <Button
@@ -159,24 +108,10 @@ export default class Login extends ValidationComponent {
                   <Text>Masuk</Text>
                 </Button>
                 {/* simpen sini hidden*/}
-                <Text
-                  style={{
-                    marginTop: 10,
-                    textAlign: 'center',
-                    fontFamily: 'Montserrat-Regular',
-                    fontSize: 12,
-                  }}>
+                <Text style={styles.registerLabel}>
                   Belum punya akun Mari Berbagi?{' '}
-                  <TouchableWithoutFeedback onPress={goToRegister}>
-                    <Text
-                      style={{
-                        textAlign: 'center',
-                        fontFamily: 'Montserrat-Bold',
-                        fontSize: 12,
-                        color: '#F05E23',
-                      }}>
-                      Daftar di Sini
-                    </Text>
+                  <TouchableWithoutFeedback onPress={this.goToRegister}>
+                    <Text style={styles.registerButton}>Daftar di Sini</Text>
                   </TouchableWithoutFeedback>
                 </Text>
               </Card>
@@ -186,42 +121,4 @@ export default class Login extends ValidationComponent {
       </Root>
     );
   }
-}
-
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#FFE8C5',
-    marginVertical: 5,
-    borderRadius: 5,
-  },
-  buttonPrimary: {
-    backgroundColor: '#F05E23',
-    marginVertical: 5,
-    borderRadius: 5,
-  },
-  container: {
-    paddingTop: 5,
-    paddingHorizontal: 10,
-  },
-});
-
-{
-  /*         
-         <Text style={{textAlign:"center",color:"#8E8E8E"}}>atau masuk dengan</Text>
-         <Button block light style={styles.button}
-                        onPress={() =>
-                        ActionSheet.show(
-                        {
-                           options: BUTTONS,
-                           cancelButtonIndex: CANCEL_INDEX,
-                           destructiveButtonIndex: DESTRUCTIVE_INDEX,
-                           title: "Masuk dengan Akun Media Sosial"
-                        },
-                        buttonIndex => {
-                           this.setState({ clicked: BUTTONS[buttonIndex] });
-                        }
-                        )}>
-                     <Text>Akun Media Sosial</Text>
-                  </Button>
-                     */
 }
