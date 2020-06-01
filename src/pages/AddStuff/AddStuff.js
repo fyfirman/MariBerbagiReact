@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {
   TextInput,
-  Alert,
   View,
   Text,
   Image,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import { Actions } from 'react-native-router-flux';
@@ -21,10 +21,13 @@ import {
   CheckBox,
   Root,
   Textarea,
+  Toast,
 } from 'native-base';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import { RadioButton } from 'react-native-paper';
 import customStyle from './styles';
+import Axios from 'axios';
+import { BASE_URL } from 'react-native-dotenv';
 
 const styles = customStyle;
 
@@ -36,21 +39,23 @@ export default class AddStuff extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      namaBarang: '',
-      namaBarangError: '',
-      deskripsi: '',
-      deskripsiError: '',
+      name: '',
+      description: '',
+      address: '',
+      jumlahBarang: '',
       condition: 'new',
       is_cod: false,
       postal_fee: false,
       picture: {
-        filepath: {
-          data: '',
-          uri: '',
-        },
-        fileData: '',
         fileUri: '',
+        fileType: '',
+        fileName: '',
       },
+      namaBarangError: '',
+      deskripsiError: '',
+      addressError: '',
+      jumlahBarangError: '',
+      pictureFile: '',
     };
   }
 
@@ -82,11 +87,13 @@ export default class AddStuff extends Component {
       } else {
         this.setState({
           picture: {
-            filePath: response,
-            fileData: response.data,
             fileUri: response.uri,
+            fileName: response.fileName,
+            fileType: response.type,
           },
+          pictureFile: response,
         });
+        console.log(this.state.picture);
       }
     });
   };
@@ -109,44 +116,47 @@ export default class AddStuff extends Component {
     }
   }
 
-  namaBarangValidator() {
-    const re_namaBarang = /^[A-Za-z0-9()\s]+$/;
-    let namaBarangIsValid = re_namaBarang.test(this.state.namaBarang);
+  handleSubmit = () => {
+    this.storeData(() => Actions.pop());
+  };
 
-    if (this.state.name == '') {
-      this.setState({
-        namaBarangError: 'Nama Barang masih kosong nih, isi dulu ya',
+  storeData = callback => {
+    let formdata = new FormData();
+    // formdata.append('picture', this.state.pictureFile);
+    formdata.append('name', this.state.name);
+    formdata.append('description', this.state.description);
+    formdata.append('status', true);
+    formdata.append('amount', this.state.jumlahBarang);
+    formdata.append('condition', this.state.condition);
+    formdata.append('picture', {
+      name: this.state.picture.fileName,
+      uri:
+        Platform.OS === 'android'
+          ? this.state.picture.uri
+          : this.state.picture.uri.replace('file://', ''),
+      type: this.state.picture.fileType,
+    });
+    formdata.append('address', this.state.address);
+    formdata.append('is_cod', this.state.is_cod);
+    formdata.append('postal_fee', this.state.postal_fee);
+    formdata.append('owner_id', '5ebaf6865b7b9b05acb03c61');
+
+    Axios.post(BASE_URL + '/api/stuff', formdata, {
+      headers: {
+        'Content-Type': `multipart/form-data; boundary=${formdata._boundary}`,
+      },
+    })
+      .then(res => {
+        console.log(res.data.message);
+        Toast.show({ text: res.data.message });
+        setTimeout(() => callback(), 1000);
+      })
+      .catch(error => {
+        console.log(formdata);
+        console.log(error);
+        console.log(error.response.data);
+        Toast.show({ text: error.response.data.message });
       });
-    } else {
-      if (!namaBarangIsValid) {
-        this.setState({
-          namaBarangError:
-            "Nama Barang tidak boleh ada simbol, kecuali kurung '( )' ",
-        });
-      } else {
-        this.setState({ nameBarangError: '' });
-      }
-    }
-  }
-
-  deskripsiValidator() {
-    if (this.state.deskripsiError == '') {
-      this.setState({ deskripsiError: 'Isi deskripsi dulu ya' });
-    } else {
-      this.setState({ deskripsiError: '' });
-    }
-  }
-
-  CheckTextInput = () => {
-    if (this.state.NamaBarang != '') {
-      if (this.state.Deskripsi != '') {
-        alert('Barang berhasil dipublikasikan!');
-      } else {
-        Alert.alert('Deskripsi kosong', 'Mohon masukkan Deskripsi Barang');
-      }
-    } else {
-      Alert.alert('Nama Barang masih Kosong', 'Mohon masukkan Nama Barang');
-    }
   };
 
   render() {
@@ -176,13 +186,12 @@ export default class AddStuff extends Component {
                   <TouchableOpacity
                     onPress={this.chooseImage}
                     style={styles.btnSection}>
-                    <Text style={styles.btnText}>Choose File</Text>
+                    <Text style={styles.btnText}>Pilih foto</Text>
                   </TouchableOpacity>
                   <Label style={styles.namaKolom}>Nama Barang</Label>
                   <TextInput
-                    onChangeText={NamaBarang => this.setState({ NamaBarang })}
+                    onChangeText={name => this.setState({ name })}
                     style={styles.kolomInput}
-                    onBlur={() => this.namaBarangValidator()}
                   />
                   <Text style={styles.notifError}>
                     {this.state.namaBarangError}
@@ -190,14 +199,21 @@ export default class AddStuff extends Component {
 
                   <Label style={styles.namaKolom}>Deskripsi</Label>
                   <Textarea
-                    onChangeText={Deskripsi => this.setState({ Deskripsi })}
-                    //style={styles.kolomInput}
+                    onChangeText={description => this.setState({ description })}
                     rowSpan={5}
                     bordered
-                    onBlur={() => this.deskripsiValidator()}
                   />
                   <Text style={styles.notifError}>
                     {this.state.deskripsiError}
+                  </Text>
+
+                  <Label style={styles.namaKolom}>Alamat</Label>
+                  <TextInput
+                    onChangeText={address => this.setState({ address })}
+                    style={styles.kolomInput}
+                  />
+                  <Text style={styles.notifError}>
+                    {this.state.addressError}
                   </Text>
 
                   <Label style={styles.namaKolom}>Kondisi Barang</Label>
@@ -237,11 +253,10 @@ export default class AddStuff extends Component {
                   <View>
                     <Label style={styles.namaKolom}>Jumlah Barang</Label>
                     <TextInput
-                      onChangeText={JumlahBarang =>
-                        this.setState({ JumlahBarang })
+                      onChangeText={jumlahBarang =>
+                        this.setState({ jumlahBarang })
                       }
                       style={styles.kolomInput}
-                      onBlur={() => this.jumlahBarangValidator}
                       keyboardType={'numeric'}
                     />
                     <Text style={styles.notifError}>
@@ -286,7 +301,7 @@ export default class AddStuff extends Component {
 
                 <Button
                   block
-                  onPress={this.CheckTextInput}
+                  onPress={this.handleSubmit}
                   style={styles.buttonPrimary}>
                   <Text style={styles.tulisanButton}>PUBLIKASI</Text>
                 </Button>
