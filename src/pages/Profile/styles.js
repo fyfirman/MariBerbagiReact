@@ -45,6 +45,14 @@ export default StyleSheet.create({
     marginRight: 15,
     marginBottom: 20,
   },
+  cardRequest: {
+    borderRadius: 20,
+    padding: 15,
+    marginTop: 20,
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 20,
+  },
   ket1: {
     justifyContent: 'space-between',
     flexDirection: 'row',

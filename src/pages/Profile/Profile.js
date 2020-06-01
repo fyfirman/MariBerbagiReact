@@ -103,6 +103,40 @@ export default class Profile extends Component {
                 })}
               </Grid>
             </Card>
+
+            <Card style={styles.cardRequest}>
+              <View style={styles.ket1}>
+                <Text style={styles.ketSaya}>Permintaan saya</Text>
+              </View>
+
+              <Grid style={styles.kartuBarang}>
+                {this.state.stuffs.map((stuff, index) => {
+                  return (
+                    <TouchableOpacity
+                      key={index}
+                      style={{ flexDirection: 'column' }}
+                      onPress={this.goToStatusBarang}>
+                      <Col size={50}>
+                        <Image
+                          source={{
+                            uri: `${BASE_URL}/${stuff.picture}`,
+                          }}
+                          style={styles.fotoBarang}
+                        />
+                        <View style={styles.boxKet}>
+                          <Text>{stuff.name}</Text>
+                          <View style={styles.isiKet}>
+                            <Text style={styles.ketBarang}>
+                              Status {stuff.condition == 'new' ? 'Baru' : 'Bekas'} -
+                            </Text>
+                          </View>
+                        </View>
+                      </Col>
+                    </TouchableOpacity>
+                  );
+                })}
+              </Grid>
+            </Card>
           </Content>
 
           <View>
