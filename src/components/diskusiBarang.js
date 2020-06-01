@@ -10,7 +10,7 @@ export default class diskusiBarang extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.paragraph}>Diskusi</Text>
+        <Text style={styles.paragraph}>Coming Soon</Text>
       </View>
     );
   }
