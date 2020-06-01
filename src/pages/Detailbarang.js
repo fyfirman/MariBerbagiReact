@@ -54,7 +54,7 @@ export default class Detailbarang extends Component {
   }
 
   async componentDidMount() {
-    await Axios.get(BASE_URL + '/api/stuff/5ed53d9712c1e41c287e5713')
+    await Axios.get(BASE_URL + '/api/stuff/' + this.props.stuff_id)
       .then(data => {
         this.setState({
           stuff: data.data.Stuff[0],
@@ -89,7 +89,7 @@ export default class Detailbarang extends Component {
               />
             </View>
             <View style={styles.barWrapper}>
-              <H2 style={{ fontSize: 20 ,color: '#ffffff', fontFamily: 'Montserrat-Bold', paddingLeft: 20}}>
+              <H2 style={{ fontSize: 20, color: '#ffffff', fontFamily: 'Montserrat-Bold', paddingLeft: 20 }}>
                 Detail Barang
               </H2>
               {/* <TextInput
