@@ -14,11 +14,15 @@ import {
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
-const goToDetailBarang = () => {
-  Actions.detailbarang();
+const goBack = () => {
+  Actions.pop();
 };
 
 export default class Request extends Component {
+  constructor(props){
+    super(props);
+  }
+
   _onPressButton = () => {
     //this.validate({
     //email: {email: true, required: true},
@@ -39,7 +43,7 @@ export default class Request extends Component {
         <Header style={{ backgroundColor: '#F05E23' }}>
           <Left>
             <Button transparent>
-              <Icon name="arrow-back" onPress={goToDetailBarang} />
+              <Icon name="arrow-back" onPress={goBack} />
             </Button>
           </Left>
           <Body>

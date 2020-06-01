@@ -20,10 +20,6 @@ const goToListbarang = () => {
   Actions.pop();
 };
 
-const goToRequest = () => {
-  Actions.request();
-};
-
 export default class Detailbarang extends Component {
   static navigationOptions = {
     header: null,
@@ -38,6 +34,10 @@ export default class Detailbarang extends Component {
       jumPeminat: 0,
     };
   }
+
+  goToRequest = () => {
+    Actions.request({ stuff_id: this.props.stuff_id });
+  };
 
   renderElement() {
     if (this.state.val == 'diskusiBarang') {
@@ -194,7 +194,7 @@ export default class Detailbarang extends Component {
             <View>{this.renderElement()}</View>
           </Content>
 
-          <TouchableOpacity style={styles.buttonMinat} onPress={goToRequest}>
+          <TouchableOpacity style={styles.buttonMinat} onPress={this.goToRequest}>
             <Text style={styles.textMinat}>MINAT MENERIMA</Text>
           </TouchableOpacity>
         </Container>
